@@ -10,7 +10,10 @@
   <a class="skip-link" href="#main">本文へ移動</a>
   <div class="site-layout">
     <header class="sidebar">
-      <a class="brand latin" href="index.html">Ryuto Shima</a>
+      <a class="brand latin" href="index.html">
+        <span>Ryuto Shima</span>
+        <img class="brand-logo" src="assets/brand/ryuto-shima-logo.svg" width="48" height="34" alt="">
+      </a>
       <nav class="site-nav" aria-label="メインナビゲーション">
         <a href="index.html" data-page="home">ホーム</a>
         <a href="genre.html?genre=sound-art" data-genre="sound-art">サウンドアート・メディアアート</a>
@@ -20,28 +23,18 @@
       </nav>
     </header>
     <main id="main" class="page-shell home-page" tabindex="-1">
-      <h1 class="page-title latin">Portfolio</h1>
-      <div class="genre-index">
-        <a class="genre-entry" href="genre.html?genre=sound-art">
-          <h2>サウンドアート・メディアアート <span aria-hidden="true">↗</span></h2>
-          <div class="genre-preview" aria-hidden="true">
-            <div class="work-media"><img src="assets/works/self-amplifier.jpg" alt=""></div>
-            <div class="work-media"><img src="assets/works/self-listening-circuit.jpg" alt=""></div>
-            <div class="work-media"><img src="assets/works/no-name-sound.jpg" alt=""></div>
-          </div>
-        </a>
-        <a class="genre-entry" href="genre.html?genre=music">
-          <h2>個人名義の楽曲（ボカロ） <span aria-hidden="true">↗</span></h2>
-          <p class="meta">掲載準備中</p>
-        </a>
-        <a class="genre-entry" href="genre.html?genre=synth">
-          <h2>自作シンセサイザー <span aria-hidden="true">↗</span></h2>
-          <p class="meta">掲載準備中</p>
-        </a>
-        <a class="genre-entry" href="genre.html?genre=live-set">
-          <h2 class="latin">Live Set <span aria-hidden="true">↗</span></h2>
-          <p class="meta latin">YouTube</p>
-        </a>
+      <h1 class="page-title">ホーム</h1>
+      <div class="home-sections">
+        <section class="home-section" aria-labelledby="statement-title">
+          <h2 id="statement-title" class="home-section-title">ステイトメント</h2>
+          <!-- 本人から提供されたステイトメントに差し替える。推測で補完しない。 -->
+          <p class="status-text">掲載準備中</p>
+        </section>
+        <section class="home-section" aria-labelledby="contact-title">
+          <h2 id="contact-title" class="home-section-title">連絡先</h2>
+          <!-- 公開用として指定された連絡先に差し替える。 -->
+          <p class="status-text">掲載準備中</p>
+        </section>
       </div>
     </main>
   </div>
