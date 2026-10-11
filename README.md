@@ -67,7 +67,7 @@ macOS/Linuxでは `py` を `python3` に置き換えます。
 - `works.html`：全ジャンルの作品一覧。`contact.html`：連絡先とmailtoリンク。
 - `genre.html?genre=design`：Designの3項目。
 - `genre.html?genre=sound-art`：サウンドアート・メディアアート一覧。
-- `work.html?id=self-amplifier`：個別作品の例。
+- `work.html?id=self-amplifier`：メイン画像＋下段サムネイル型ギャラリーの個別作品例。
 - `src/data.js`：ジャンル・作品情報。
 - `src/styles.css`：見た目とレスポンシブ。
 - `src/site.js`：全ページ共通の階層ナビゲーション生成と現在位置。
@@ -93,7 +93,7 @@ macOS/Linuxでは `py` を `python3` に置き換えます。
 ## Sound Art/Media Artのメディア登録（2026-10-12）
 
 - 7作品の `01` を一覧とWorks内のサムネイルに指定。`src/data.js` の `image` が一覧用、`media` が詳細ページに表示する写真・動画の番号順配列。
-- 詳細ページの `src/work.js` は `media` 配列内の画像（JPEG/PNG）と動画（MP4など）を順番に描画する。動画はクリックで再生できるコントロール付きで、勝手に再生しない。従来の `images` / `image` とYouTubeリンクも維持。
+- 詳細ページの `src/work.js` は `media` 配列の画像・動画を1件ずつ大きく表示するギャラリー方式。下に正方形のサムネイルを横スクロール表示し、クリック、前後ボタン、左右キー、メイン領域のタッチスワイプで切替。動画は切替後に操作して再生（自動再生なし）。選択を変えると前の動画を停止する。従来の `images` / `image` とYouTubeリンクも維持。
 - 作品ごとのフォルダは `assets/works/Light with MK1/`、`light-with-mk2/`、`self-amplifier/`、`self-amplifier-re/`、`self-listening-circuit/`、`soil-with/`、`no-name-sound/`。ファイル名の大小文字に注意。サムネイルはすべて各フォルダ内の01を使用する。
 - Sound Art/Media Artの01画像は7作品とも横4:3（JPEG/PNGヘッダ実寸を再確認済み）。一覧枠も横4:3に統一し、写真とタイトルの間に不必要な空白が生じないようにする。`object-fit: contain` でトリミングしない。以前の「6作品は縦3:4」という記載はJPEG寸法の読み取り時に縦横を取り違えた誤り。
 - 旧単体画像 `assets/works/self-amplifier.jpg` などは削除せず残す。新しく作品フォルダへ画像や動画を追加した際は `src/data.js` の `media` 配列も更新する。ファイルの存在だけでは自動掲載されない。

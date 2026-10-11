@@ -30,31 +30,169 @@
   // media preserves the author's order, including interleaved photographs and videos.
   // Older entries may still use images or image.
   const sources = Array.isArray(work.media) ? work.media : (work.images || (work.image ? [work.image] : []));
-  sources.forEach(function (source, index) {
-    const figure = document.createElement("figure");
-    figure.className = "work-photo";
-    if (/\.(?:mp4|webm|ogg)(?:[?#]|$)/i.test(source)) {
-      const video = document.createElement("video");
-      video.src = source;
-      video.controls = true;
-      video.playsInline = true;
-      video.preload = "metadata";
-      video.setAttribute("aria-label", work.title + " — 動画 " + (index + 1));
-      const fallback = document.createElement("a");
-      fallback.href = source;
-      fallback.textContent = "動画ファイルを開く";
-      video.appendChild(fallback);
-      figure.appendChild(video);
-    } else {
-      const img = document.createElement("img");
-      img.src = source;
-      img.alt = work.title + " — 画像 " + (index + 1);
-      img.decoding = "async";
-      if (index > 0) img.loading = "lazy";
-      figure.appendChild(img);
+  if (sources.length) {
+    const gallery = document.createElement("section");
+    gallery.className = "work-gallery";
+    gallery.setAttribute("aria-label", work.title + " の画像と動画");
+
+    const viewer = document.createElement("div");
+    viewer.className = "work-gallery-viewer";
+    viewer.tabIndex = 0;
+    viewer.setAttribute("aria-label", "メイン表示。左右の矢印キー、またはスワイプで切り替え");
+
+    const screen = document.createElement("div");
+    screen.className = "work-gallery-screen";
+    viewer.appendChild(screen);
+
+    const thumbnails = [];
+    let activeIndex = 0;
+    let startTouch = null;
+
+    function isVideo(source) {
+      return /\.(?:mp4|webm|ogg)(?:[?#]|$)/i.test(source);
     }
-    mediaStack.appendChild(figure);
-  });
+
+    function selectMedia(index) {
+      if (index < 0 || index >= sources.length || index === activeIndex && screen.firstChild) return;
+      const previousVideo = screen.querySelector("video");
+      if (previousVideo) previousVideo.pause();
+
+      activeIndex = index;
+      const source = sources[index];
+      let media;
+      if (isVideo(source)) {
+        media = document.createElement("video");
+        media.src = source;
+        media.controls = true;
+        media.playsInline = true;
+        media.preload = "metadata";
+        media.setAttribute("aria-label", work.title + " — 動画 " + (index + 1));
+        const fallback = document.createElement("a");
+        fallback.href = source;
+        fallback.textContent = "動画ファイルを開く";
+        media.appendChild(fallback);
+      } else {
+        media = document.createElement("img");
+        media.src = source;
+        media.alt = work.title + " — 画像 " + (index + 1);
+        media.decoding = "async";
+      }
+      media.className = "work-gallery-main-media";
+      screen.replaceChildren(media);
+
+      thumbnails.forEach(function (button, thumbIndex) {
+        button.setAttribute("aria-pressed", thumbIndex === activeIndex ? "true" : "false");
+      });
+      if (counter) counter.textContent = (activeIndex + 1) + " / " + sources.length;
+      const selected = thumbnails[activeIndex];
+      if (selected && selected.scrollIntoView) {
+        selected.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "nearest" });
+      }
+    }
+
+    let counter = null;
+    if (sources.length > 1) {
+      function createArrow(label, symbol, change, className) {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "work-gallery-arrow " + className;
+        button.setAttribute("aria-label", label);
+        button.textContent = symbol;
+        button.addEventListener("click", function () {
+          selectMedia((activeIndex + change + sources.length) % sources.length);
+        });
+        viewer.appendChild(button);
+      }
+      createArrow("前の画像・動画", "‹", -1, "work-gallery-arrow--prev");
+      createArrow("次の画像・動画", "›", 1, "work-gallery-arrow--next");
+
+      gallery.addEventListener("keydown", function (event) {
+        if (event.target.tagName === "VIDEO" || event.target.tagName === "A") return;
+        if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+        event.preventDefault();
+        const direction = event.key === "ArrowLeft" ? -1 : 1;
+        selectMedia((activeIndex + direction + sources.length) % sources.length);
+      });
+
+      viewer.addEventListener("touchstart", function (event) {
+        if (event.touches.length !== 1 || event.target.tagName === "VIDEO") {
+          startTouch = null;
+          return;
+        }
+        startTouch = { x: event.touches[0].clientX, y: event.touches[0].clientY };
+      }, { passive: true });
+      viewer.addEventListener("touchend", function (event) {
+        if (!startTouch || !event.changedTouches.length) return;
+        const dx = event.changedTouches[0].clientX - startTouch.x;
+        const dy = event.changedTouches[0].clientY - startTouch.y;
+        startTouch = null;
+        if (Math.abs(dx) < 45 || Math.abs(dx) <= Math.abs(dy) * 1.25) return;
+        selectMedia((activeIndex + (dx < 0 ? 1 : -1) + sources.length) % sources.length);
+      }, { passive: true });
+      viewer.addEventListener("touchcancel", function () { startTouch = null; });
+    }
+
+    gallery.appendChild(viewer);
+
+    if (sources.length > 1) {
+      const controls = document.createElement("div");
+      controls.className = "work-gallery-controls";
+
+      const strip = document.createElement("div");
+      strip.className = "work-gallery-thumbnails";
+      strip.setAttribute("role", "group");
+      strip.setAttribute("aria-label", "写真・動画のサムネイル");
+
+      sources.forEach(function (source, index) {
+        const videoItem = isVideo(source);
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "work-gallery-thumb";
+        button.setAttribute("aria-label", (videoItem ? "動画 " : "画像 ") + (index + 1) + " を表示");
+        button.setAttribute("aria-pressed", index === 0 ? "true" : "false");
+
+        if (videoItem) {
+          const preview = document.createElement("video");
+          preview.className = "work-gallery-thumb-media";
+          preview.src = source + "#t=0.1";
+          preview.muted = true;
+          preview.playsInline = true;
+          preview.preload = "metadata";
+          preview.tabIndex = -1;
+          preview.setAttribute("aria-hidden", "true");
+          button.appendChild(preview);
+
+          const mark = document.createElement("span");
+          mark.className = "work-gallery-thumb-play";
+          mark.textContent = "▶";
+          mark.setAttribute("aria-hidden", "true");
+          button.appendChild(mark);
+        } else {
+          const preview = document.createElement("img");
+          preview.className = "work-gallery-thumb-media";
+          preview.src = source;
+          preview.alt = "";
+          preview.loading = index > 5 ? "lazy" : "eager";
+          button.appendChild(preview);
+        }
+        button.addEventListener("click", function () { selectMedia(index); });
+        thumbnails.push(button);
+        strip.appendChild(button);
+      });
+
+      counter = document.createElement("span");
+      counter.className = "work-gallery-counter latin";
+      counter.setAttribute("aria-live", "polite");
+      counter.textContent = "1 / " + sources.length;
+
+      controls.appendChild(strip);
+      controls.appendChild(counter);
+      gallery.appendChild(controls);
+    }
+
+    mediaStack.appendChild(gallery);
+    selectMedia(0);
+  }
   if (work.externalUrl) {
     const external = document.createElement("a");
     external.className = "external-link";
