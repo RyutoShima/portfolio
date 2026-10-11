@@ -168,3 +168,10 @@
 - GitHub Pages公開済み。公開URL: https://ryutoshima.github.io/portfolio/ 。ユーザーが表示を確認済み。
 - リポジトリはpublic。Pages公開元は `site-v1` の `/(root)`。`main` は更新しない。`site-v1` の更新は公開サイトへ反映される。
 - HomeとWorksの間に `Upcoming Events` を追加し、`upcoming.html` へ遷移する。出演・展示等の日程、会場、イベント名は未提供なので仮情報を作らない。
+
+## 9. Sound Art/Media Art作品メディアの掲載（2026-10-12）
+
+- 本人が `site-v1` へアップロードした7作品の画像23枚と動画7本を番号順に掲載。`01` を各作品のサムネイルとする。
+- 01の寸法：Light with MK1のみ1076×807の横4:3。残り6作品は縦3:4。Sound Art/Media Artのサムネイル領域は縦3:4に変更。ただし切り抜き・変形を行わず `contain` で表示する。
+- 詳細ページは写真・動画を各フォルダの連番どおりに配置し、動画は操作で再生する。旧URLとYouTubeリンクは維持する。
+- `main` と既存メディアファイルは変更しない。

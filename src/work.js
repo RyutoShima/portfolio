@@ -27,15 +27,32 @@
   }
   const mediaStack = document.createElement("div");
   mediaStack.className = "work-stack";
-  const images = work.images || (work.image ? [work.image] : []);
-  images.forEach(function (source, index) {
+  // media preserves the author's order, including interleaved photographs and videos.
+  // Older entries may still use images or image.
+  const sources = Array.isArray(work.media) ? work.media : (work.images || (work.image ? [work.image] : []));
+  sources.forEach(function (source, index) {
     const figure = document.createElement("figure");
     figure.className = "work-photo";
-    const img = document.createElement("img");
-    img.src = source;
-    img.alt = work.title;
-    if (index > 0) img.loading = "lazy";
-    figure.appendChild(img);
+    if (/\\.(?:mp4|webm|ogg)(?:[?#]|$)/i.test(source)) {
+      const video = document.createElement("video");
+      video.src = source;
+      video.controls = true;
+      video.playsInline = true;
+      video.preload = "metadata";
+      video.setAttribute("aria-label", work.title + " — 動画 " + (index + 1));
+      const fallback = document.createElement("a");
+      fallback.href = source;
+      fallback.textContent = "動画ファイルを開く";
+      video.appendChild(fallback);
+      figure.appendChild(video);
+    } else {
+      const img = document.createElement("img");
+      img.src = source;
+      img.alt = work.title + " — 画像 " + (index + 1);
+      img.decoding = "async";
+      if (index > 0) img.loading = "lazy";
+      figure.appendChild(img);
+    }
     mediaStack.appendChild(figure);
   });
   if (work.externalUrl) {
@@ -58,7 +75,7 @@
     });
     mediaStack.appendChild(description);
   }
-  if (!images.length && !work.externalUrl && !work.description) {
+  if (!sources.length && !work.externalUrl && !work.description) {
     const pending = document.createElement("p");
     pending.className = "status-text";
     pending.textContent = "画像・詳細情報は未登録です。";

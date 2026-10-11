@@ -77,34 +77,82 @@ window.PORTFOLIO_DATA = {
   "works": {
     "light-with-mk1": {
       "title": "音＿機構「Light with MK1」",
-      "genre": "sound-art"
+      "genre": "sound-art",
+      "image": "assets/works/Light with MK1/01.png",
+      "media": [
+        "assets/works/Light with MK1/01.png",
+        "assets/works/Light with MK1/02.png"
+      ]
     },
     "self-amplifier": {
       "title": "自己増幅器",
       "genre": "sound-art",
-      "image": "assets/works/self-amplifier.jpg"
+      "image": "assets/works/self-amplifier/01.JPG",
+      "media": [
+        "assets/works/self-amplifier/01.JPG",
+        "assets/works/self-amplifier/02.JPG",
+        "assets/works/self-amplifier/03.JPG",
+        "assets/works/self-amplifier/04.mp4",
+        "assets/works/self-amplifier/05.mp4"
+      ]
     },
     "light-with-mk2": {
       "title": "音＿機構「Light with MK2」",
-      "genre": "sound-art"
+      "genre": "sound-art",
+      "image": "assets/works/light-with-mk2/01.jpg",
+      "media": [
+        "assets/works/light-with-mk2/01.jpg",
+        "assets/works/light-with-mk2/02.jpg",
+        "assets/works/light-with-mk2/03.jpg",
+        "assets/works/light-with-mk2/04.jpg",
+        "assets/works/light-with-mk2/05.jpg"
+      ]
     },
     "self-amplifier-reexhibition": {
       "title": "自己増幅器(再展示)",
-      "genre": "sound-art"
+      "genre": "sound-art",
+      "image": "assets/works/self-amplifier-re/01.jpg",
+      "media": [
+        "assets/works/self-amplifier-re/01.jpg",
+        "assets/works/self-amplifier-re/02.jpg",
+        "assets/works/self-amplifier-re/03.jpg",
+        "assets/works/self-amplifier-re/04.jpg",
+        "assets/works/self-amplifier-re/05.mp4"
+      ]
     },
     "self-listening-circuit": {
       "title": "自己聴取回路",
       "genre": "sound-art",
-      "image": "assets/works/self-listening-circuit.jpg"
+      "image": "assets/works/self-listening-circuit/01.jpg",
+      "media": [
+        "assets/works/self-listening-circuit/01.jpg",
+        "assets/works/self-listening-circuit/02.mp4",
+        "assets/works/self-listening-circuit/03.jpg"
+      ]
     },
     "soil-with-prototype": {
       "title": "soil with(prototype)",
-      "genre": "sound-art"
+      "genre": "sound-art",
+      "image": "assets/works/soil-with/01.jpg",
+      "media": [
+        "assets/works/soil-with/01.jpg",
+        "assets/works/soil-with/02.mp4"
+      ]
     },
     "no-name-sound": {
       "title": "NO NAME SOUND",
       "genre": "sound-art",
-      "image": "assets/works/no-name-sound.jpg"
+      "image": "assets/works/no-name-sound/01.jpg",
+      "media": [
+        "assets/works/no-name-sound/01.jpg",
+        "assets/works/no-name-sound/02.jpg",
+        "assets/works/no-name-sound/03.jpg",
+        "assets/works/no-name-sound/04.jpg",
+        "assets/works/no-name-sound/05.jpg",
+        "assets/works/no-name-sound/06.jpg",
+        "assets/works/no-name-sound/07.mp4",
+        "assets/works/no-name-sound/08.mp4"
+      ]
     },
     "initinal-conditions": {
       "title": "Initinal Conditions",
