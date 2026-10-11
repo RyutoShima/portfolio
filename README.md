@@ -10,6 +10,19 @@ GitHub `RyutoShima/portfolio` が正本。制作ブランチは **site-v1**。ma
 初版のローカル動作はユーザー確認済み。第2稿はコード・生成DOMの確認を実施し、ブラウザ実画面の確認は未実施です。
 公開方式とドメインは未決定です。
 
+## GitHub Pages公開（ユーザー側の設定待ち）
+
+このサイトはビルド不要の静的HTML/CSS/JavaScriptです。公開時も `main` は変更せず、現時点で最新の実装を持つ `site-v1` のルートフォルダをGitHub Pagesの公開元として使用します。
+
+1. GitHubの `RyutoShima/portfolio` → `Settings` → `Pages` を開く。
+2. `Build and deployment` の `Source` を `Deploy from a branch` にする。
+3. ブランチ `site-v1`、フォルダ `/(root)` を選び、`Save` を押す。
+4. Actionsで初回デプロイを確認し、Pages設定内の `Visit site` から開く。一般的なプロジェクトURLは `https://ryutoshima.github.io/portfolio/` だが、実際の公開URLは設定画面で確認する。
+
+注意：リポジトリは現在private。GitHub FreeでPagesを利用するにはpublicへの切替が必要（GitHub Pro等はprivateでも利用可能）。publicへの切替はGitHubリポジトリのソースコードも公開するため、ユーザーが自分で判断する。GitHub Pages自体は通常、privateリポジトリでも公開サイトとして閲覧可能。サイト公開後の `site-v1` への変更は原則として公開サイトに反映される。編集を公開前に確認する体制に変更する場合は、公開専用ブランチや `main` からのデプロイへ切り替える。
+
+`.nojekyll` は静的ファイルを加工せずに配信するためのマーカーファイルです。README記載だけでは公開されません。Pages画面での設定・初回デプロイ成功の確認が必要です。
+
 ## 手元で開く（Windows）
 
 ### Gitで取得済みの場合
