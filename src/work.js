@@ -33,7 +33,7 @@
   sources.forEach(function (source, index) {
     const figure = document.createElement("figure");
     figure.className = "work-photo";
-    if (/\\.(?:mp4|webm|ogg)(?:[?#]|$)/i.test(source)) {
+    if (/\.(?:mp4|webm|ogg)(?:[?#]|$)/i.test(source)) {
       const video = document.createElement("video");
       video.src = source;
       video.controls = true;
