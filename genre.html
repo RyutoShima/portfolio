@@ -7,17 +7,26 @@
   <link rel="stylesheet" href="src/styles.css">
 </head>
 <body>
-  <header class="topbar">
-    <a class="brand latin" href="index.html">Ryuto Shima</a>
-    <a class="home-link" href="index.html">ホーム</a>
-  </header>
-
-  <main class="page-shell">
-    <h1 id="genre-title" class="page-title"></h1>
-    <div id="genre-content"></div>
-  </main>
-
+  <a class="skip-link" href="#main">本文へ移動</a>
+  <div class="site-layout">
+    <header class="sidebar">
+      <a class="brand latin" href="index.html">Ryuto Shima</a>
+      <nav class="site-nav" aria-label="メインナビゲーション">
+        <a href="index.html" data-page="home">ホーム</a>
+        <a href="genre.html?genre=sound-art" data-genre="sound-art">サウンドアート・メディアアート</a>
+        <a href="genre.html?genre=music" data-genre="music">個人名義の楽曲（ボカロ）</a>
+        <a href="genre.html?genre=synth" data-genre="synth">自作シンセサイザー</a>
+        <a class="latin" href="genre.html?genre=live-set" data-genre="live-set">Live Set</a>
+      </nav>
+    </header>
+    <main id="main" class="page-shell" tabindex="-1">
+      <h1 id="genre-title" class="page-title"></h1>
+      <div id="genre-content"></div>
+      <noscript><p>作品一覧を表示するにはJavaScriptを有効にしてください。</p></noscript>
+    </main>
+  </div>
   <script src="src/data.js"></script>
+  <script src="src/site.js"></script>
   <script src="src/genre.js"></script>
 </body>
 </html>

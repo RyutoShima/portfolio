@@ -1,21 +1,73 @@
 # Ryuto Shima — Portfolio
 
 作品の公開・記録を目的とするポートフォリオサイト。
+GitHub `RyutoShima/portfolio` が正本。制作ブランチは **site-v1**。mainの変更・本番公開は行っていません。
 
-リポジトリ: https://github.com/RyutoShima/portfolio （非公開）
+## 現在の状態
 
-## Codex作業開始
+2026-10-12：デザイン第2稿。黒背景・白文字、左ナビゲーション、PC4〜5列の画像一覧。
+初版のローカル動作はユーザー確認済み。第2稿はコード・生成DOMの確認を実施し、ブラウザ実画面の確認は未実施です。
+公開方式とドメインは未決定です。
 
-1. `PROJECT_GUIDE.md` — ユーザー提供の共通運用指示書（原文維持）。
-2. `PROJECT_BRIEF.md` — 最新の決定事項、素材対応、未決定事項。
-3. `CODEX_HANDOFF.md` — 初版の実装範囲、暫定値、完了条件。
+## 手元で開く（Windows）
 
-上記の順に読み、ホーム → ジャンル → 個別作品の初版を実装する。黒背景・白文字、整列した画像一覧、日本語と英字のフォント指定の分離を優先する。
+### Gitで取得済みの場合
 
-## 素材
+portfolioフォルダーでターミナルを開き、次を順に実行します。
 
-`assets/works/` に訂正済みの作品対応でWeb用画像3点を収録。詳細は実装指示書を参照。
+```sh
+git status
+git switch site-v1
+git pull --ff-only origin site-v1
+```
 
-## 状況
+未コミットの変更がある場合は、破棄せず先に保存してください。切り替えや更新が競合で停止した場合も、強制上書きしないでください。
+更新後はフォルダー内の **index.htmlをダブルクリック**するとブラウザで開けます。この構成はfile://でも動作します。
 
-初版実装への引き継ぎ準備が完了。サイトコードと公開設定はまだない。Codexで実装・動作確認後、起動方法・作品追加方法・確認結果を追記する。本番公開方式とドメインは未決定。
+### Gitを使わず取得する場合
+
+1. GitHubにログインし https://github.com/RyutoShima/portfolio/tree/site-v1 を開く。
+2. ブランチが `site-v1` であることを確認し、Code → Download ZIP。
+3. ZIPを展開し、展開先の `index.html` をダブルクリック。
+
+### ローカルサーバーで開く場合
+
+index.htmlがあるフォルダーで以下を実行します（Pythonが必要）。
+
+```sh
+py -m http.server 8000 --bind 127.0.0.1
+```
+
+ブラウザで http://127.0.0.1:8000/ を開きます。停止はターミナルで Ctrl+C。
+macOS/Linuxでは `py` を `python3` に置き換えます。
+外部公開はされません。古い表示が残る場合は Ctrl+F5 で再読み込みしてください。
+
+## 構成と作品追加
+
+ビルド不要のHTML/CSS/JavaScriptです。依存ライブラリのインストールは不要です。
+
+- `index.html`：4ジャンルへの入口。
+- `genre.html?genre=sound-art`：サウンドアート・メディアアート一覧。
+- `work.html?id=self-amplifier`：個別作品の例。
+- `src/data.js`：ジャンル・作品情報。
+- `src/styles.css`：見た目とレスポンシブ。
+- `src/site.js`：ナビゲーションの現在位置。
+
+作品追加は `src/data.js` の `works` に固有IDの項目を追加し、所属ジャンルの `works` 配列にも同じIDを追加します。作品名は `title`、所属ジャンルIDは `genre`、一覧の写真は `image` に指定します。写真ファイルは `assets/works/` に置きます。
+
+必要な情報が提供された場合だけ、以下の任意項目を使用できます。
+
+| キー | 内容 |
+| --- | --- |
+| metadata | 一覧と個別ページの小さな補助情報。未提供なら省略 |
+| images | 個別ページの画像パス配列。省略時はimageを表示 |
+| description | 説明文。空行で段落を分ける |
+| externalUrl | 提供されたYouTubeリンク（現行表示はYouTube用） |
+
+現在の作品情報・画像対応を推測で変更しないでください。ホームのジャンル見出し・プレビューを変更する際はindex.htmlも編集します。共通ナビは3HTMLで揃えます。
+
+## 作業前に読む文書
+
+1. PROJECT_GUIDE.md：共通運用ルール。
+2. PROJECT_BRIEF.md：最新仕様・素材対応。
+3. CODEX_HANDOFF.md：実装状況・調整値・次の確認。
