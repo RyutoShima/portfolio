@@ -1,6 +1,6 @@
 # Ryuto Shima — Portfolio Project Brief
 
-更新日: 2026-10-12（日本時間） / Rev. 0.9
+更新日: 2026-10-12（日本時間） / Rev. 1.0
 
 この文書は会話で確認した制作条件を記録する。運用ルールは PROJECT_GUIDE.md を参照する。提案を決定事項として扱わない。
 
@@ -35,12 +35,12 @@
 - PCは左に共通ナビゲーション、右に内容。右上にロゴのみを置く。作品一覧は4列、1440px以上で5列。761〜1099pxは3列、360〜760pxは2列、359px以下は1列を第2稿の調整可能な値とする。
 - 作品が3点でも列幅を拡張しない。画像枠の縦横比は4:3、写真は切り抜かず左上に揃える。列と間隔を統一する。
 - 画像 → 提供済みの補助情報（あれば）→ 小さな作品名。制作年等は未提供なので追加しない。
-- ホームは先頭に少し大きなRyuto Shimaを表示し、提供された写真を名義とArtist Biographyの間に置く。その後にArtist Biography・Awards・Presentation・ステイトメント・連絡先を縦に配置する。作品写真やジャンル一覧を本文に表示しない。左側の分類ナビゲーションから、そのジャンルの作品一覧へ進む。
-- ステイトメント本文は未提供。「掲載準備中」を表示。公開用連絡先には本人指定の shima.ryuto.art@gmail.com を掲載する。
+- ホームは先頭に少し大きなRyuto Shimaを表示し、提供された写真を名義とArtist Biographyの間に置く。その後にArtist Biography → ステイトメント → Awards → Presentationを縦に配置する。連絡先は独立したContactページに移設する。
+- ステイトメント本文は未提供。「掲載準備中」を表示。公開用連絡先 shima.ryuto.art@gmail.com はContactページで表示する。
 - 右上はユーザー提供SVGロゴのみ。名義はホーム本文の先頭に表示する。ロゴの形状・色・SVGデータは変更しない。
 - ホーム用画像として本人提供の445102.jpgを受領。300×300pxのWeb用AVIFに変換し、assets/home/home-photo.avifに配置する。元画像は変更しない。
 - Artist Biography本文、Awards 1件、Presentation 14件を2026-10-12のユーザー提供内容から掲載。表記・日付・提示順を保持。「Initinal Conditions」「Cell Automata Synthesizer」の2026/12も原文のまま。soil with(prototype)は日付未提供なので日付を表示しない。
-- 分類ナビゲーションは Sound Art/Media Art、Music、Live Set、Instrument(Digital)、Instrument(Analog)、Plugin、Design の7分類。未提供ジャンルには「掲載準備中」を表示する。旧URL genre=synth は互換のため保持。
+- ナビゲーションはHome → Works（子に Sound Art/Media Art、Music、Live Set、Instrument(Digital)、Instrument(Analog)、Plugin、Design の7分類）→ Contact。Worksをクリックすると全ジャンルの作品一覧を表示する。各ジャンルの作品は本人指定の順で追加。未提供画像・詳細は作らない。旧URL genre=synth は互換のため保持。
 - 全体の文字を約10〜20%拡大。本文16px、ナビ14px、PC作品名15px、補助情報13px。ホーム名義は32〜44px（モバイル34px）。
 - 個別ページは控えめな作品名と、写真・動画リンク・説明文の縦配置。提供されたYouTubeリンクを保持し、埋め込みは追加しない。
 - 日英フォント指定を分離し、日本語は通常の字間と読みやすい太さにする。
@@ -77,8 +77,8 @@
 
 ## 3. 未決定・未提供
 
-- 正式なサイト名（掲載名義とは別）、ページ階層以外の細かなページ構成・ナビゲーション。
-- カテゴリ名、分類方法、一覧の並び順。
+- 正式なサイト名（掲載名義とは別）、細かなナビゲーションの見た目。
+- 今後追加する作品・制作年・画像の詳細情報。
 - 白黒を基本とした細部の配色、フォント・レイアウト・アニメーション。
 - 個別作品ページに追加する写真・作品説明・クレジット等。Presentationの日付を制作年だと推測して転用しない。
 - 独立したステイトメント本文。ホーム用画像と連絡先、提供済みArtist Biography・Awards・Presentationはindex.htmlに掲載済み。
@@ -145,3 +145,20 @@
 - チャット内の旧ラフは最終デザインではない。ユーザーが不採用とした左右の段差・赤い文字・日本語の旧スタイルを引き継がない。
 - 今後はCODEX_HANDOFF.md に沿い、実装とプレビューで細部を調整する。本番公開は別途検討する。
 
+
+## 7. 追加登録した作品枠（2026-10-12）
+
+次の順番で `src/data.js` に登録する。年月やクレジット、画像、説明文はユーザー未提供のため補完しない。
+「自己増幅器(再展示)」、Sound ArtとDesignの「NO NAME SOUND」、Live SetとDesignの「Flow+er」は別掲載枠。
+
+| ジャンル | 表示順 |
+| --- | --- |
+| Sound Art/Media Art | 音＿機構「Light with MK1」 → 自己増幅器 → 音＿機構「Light with MK2」 → 自己増幅器(再展示) → 自己聴取回路 → soil with(prototype) → NO NAME SOUND |
+| Music | Initinal Conditions → 俺VS初音ミク |
+| Live Set | ozm_sis vol.3 → Pulse → Flow+er |
+| Instrument(Digital) | CAKS → Cell Automata Synthesizer → Your |
+| Instrument(Analog) | In Progress → Soil Module |
+| Plugin | 項目なし（掲載準備中） |
+| Design | Flow+er → NO NAME SOUND → Ryuto Shimaロゴ |
+
+既存3作品の写真は保持。その他は写真未登録と表示する。Instrument(Analog)の「In Progress」内部の3区分については今回掲載しない（ユーザーの制作メモ）。既存Live SetのYouTubeリンクは3公演との紐づけが不明のため、旧URL `work.html?id=live-set` にのみ残し、作品を捏造せず対応確認待ちとする。

@@ -58,5 +58,11 @@
     });
     mediaStack.appendChild(description);
   }
+  if (!images.length && !work.externalUrl && !work.description) {
+    const pending = document.createElement("p");
+    pending.className = "status-text";
+    pending.textContent = "画像・詳細情報は未登録です。";
+    mediaStack.appendChild(pending);
+  }
   root.appendChild(mediaStack);
 })();

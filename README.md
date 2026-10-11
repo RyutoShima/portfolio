@@ -6,7 +6,7 @@ GitHub `RyutoShima/portfolio` が正本。制作ブランチは **site-v1**。ma
 ## 現在の状態
 
 2026-10-12：デザイン第2稿。黒背景・白文字、左ナビゲーション、PC4〜5列の画像一覧。
-追加調整：右上はSVGロゴのみ、ホーム先頭は大きめのRyuto Shima。提供されたArtist Biography・Awards・Presentationを掲載しました。分類は Sound Art/Media Art、Music、Live Set、Instrument(Digital)、Instrument(Analog)、Plugin、Design の7分類です。独立したステイトメントと未提供作品は「掲載準備中」。連絡先には指定されたメールアドレス、ホームには提供写真を配置しています。
+追加調整：上部右にSVGロゴ、ホーム先頭にRyuto Shimaと提供画像を配置。Artist Biographyの直後にステイトメント（本文未提供）、次にAwardsとPresentation。ナビゲーションはHome / Works（7ジャンル）/ Contactの階層構成です。全20の作品・項目を指定順で登録し、作品のないPluginのみ「掲載準備中」。
 初版のローカル動作はユーザー確認済み。第2稿はコード・生成DOMの確認を実施し、ブラウザ実画面の確認は未実施です。
 公開方式とドメインは未決定です。
 
@@ -47,15 +47,18 @@ macOS/Linuxでは `py` を `python3` に置き換えます。
 
 ビルド不要のHTML/CSS/JavaScriptです。依存ライブラリのインストールは不要です。
 
-- `index.html`：名義・ホーム画像・Artist Biography・Awards・Presentation・ステイトメント・メールアドレス。経歴の表記・日付はユーザー指定を保持します。
+- `index.html`：名義・ホーム画像・Artist Biography・ステイトメント（掲載準備中）・Awards・Presentation。メールアドレスは掲載しません。
 - `assets/home/home-photo.avif`：提供された445102.jpgをWeb向けに圧縮した画像（300×300px）。
 - `assets/brand/ryuto-shima-logo.svg`：右上に単独表示する提供ロゴ。
-- `genre.html?genre=design`：デザイン一覧（掲載準備中）。
+- `works.html`：全ジャンルの作品一覧。`contact.html`：連絡先とmailtoリンク。
+- `genre.html?genre=design`：Designの3項目。
 - `genre.html?genre=sound-art`：サウンドアート・メディアアート一覧。
 - `work.html?id=self-amplifier`：個別作品の例。
 - `src/data.js`：ジャンル・作品情報。
 - `src/styles.css`：見た目とレスポンシブ。
-- `src/site.js`：ナビゲーションの現在位置。
+- `src/site.js`：全ページ共通の階層ナビゲーション生成と現在位置。
+- `src/work-grid.js`：ジャンル一覧・Works一覧に共通するグリッド表示。
+- `src/works.js`：全作品一覧。
 
 作品追加は `src/data.js` の `works` に固有IDの項目を追加し、所属ジャンルの `works` 配列にも同じIDを追加します。作品名は `title`、所属ジャンルIDは `genre`、一覧の写真は `image` に指定します。写真ファイルは `assets/works/` に置きます。
 
@@ -68,7 +71,9 @@ macOS/Linuxでは `py` を `python3` に置き換えます。
 | description | 説明文。空行で段落を分ける |
 | externalUrl | 提供されたYouTubeリンク（現行表示はYouTube用） |
 
-現在の作品情報・画像対応を推測で変更しないでください。ホーム本文はindex.htmlで編集します。公開用として指定されていないメールアドレスやSNSは掲載しません。共通ナビは3HTMLで揃えます。
+現在の作品情報・画像対応を推測で変更しないでください。ホーム本文はindex.htmlで編集します。公開用として指定されていないメールアドレスやSNSは掲載しません。共通ナビは `src/site.js` が生成します。項目・順序は `src/data.js` の `navigationGenres` と各ジャンルの `works` 配列で編集します。
+
+写真未提供の項目では、装飾のない4:3の画像領域に「画像未登録」と表示します。新しいLive Set3件と、以前のYouTubeリンクとの対応は未確認です。従来の `work.html?id=live-set` に動画リンクを保持し、新しい3件へ推測で割り当てていません。「自己増幅器(再展示)」、およびSound ArtとDesignの同名作品は別IDで登録しています。
 
 ## 作業前に読む文書
 
