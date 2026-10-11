@@ -14,6 +14,11 @@ window.PORTFOLIO_DATA = {
       works: [],
       status: "掲載準備中"
     },
+    "design": {
+      label: "デザイン",
+      works: [],
+      status: "掲載準備中"
+    },
     "live-set": {
       label: "Live Set",
       works: ["live-set"]

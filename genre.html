@@ -8,20 +8,22 @@
 </head>
 <body>
   <a class="skip-link" href="#main">本文へ移動</a>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Ryuto Shima — ホーム">
+      <img class="brand-logo" src="assets/brand/ryuto-shima-logo.svg" width="72" height="51" alt="">
+    </a>
+  </header>
   <div class="site-layout">
-    <header class="sidebar">
-      <a class="brand latin" href="index.html">
-        <span>Ryuto Shima</span>
-        <img class="brand-logo" src="assets/brand/ryuto-shima-logo.svg" width="48" height="34" alt="">
-      </a>
+    <aside class="sidebar">
       <nav class="site-nav" aria-label="メインナビゲーション">
         <a href="index.html" data-page="home">ホーム</a>
         <a href="genre.html?genre=sound-art" data-genre="sound-art">サウンドアート・メディアアート</a>
         <a href="genre.html?genre=music" data-genre="music">個人名義の楽曲（ボカロ）</a>
         <a href="genre.html?genre=synth" data-genre="synth">自作シンセサイザー</a>
         <a class="latin" href="genre.html?genre=live-set" data-genre="live-set">Live Set</a>
+        <a href="genre.html?genre=design" data-genre="design">デザイン</a>
       </nav>
-    </header>
+    </aside>
     <main id="main" class="page-shell" tabindex="-1">
       <h1 id="genre-title" class="page-title"></h1>
       <div id="genre-content"></div>
