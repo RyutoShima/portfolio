@@ -21,6 +21,10 @@
   if (filename === "index.html") home.setAttribute("aria-current", "page");
   nav.appendChild(home);
 
+  const upcoming = link("Upcoming Events", "upcoming.html", "nav-top latin");
+  if (filename === "upcoming.html") upcoming.setAttribute("aria-current", "page");
+  nav.appendChild(upcoming);
+
   const works = link("Works", "works.html", "nav-top latin");
   if (filename === "works.html") works.setAttribute("aria-current", "page");
   else if (withinWorks) works.classList.add("nav-ancestor-current");

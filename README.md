@@ -1,16 +1,16 @@
 # Ryuto Shima — Portfolio
 
 作品の公開・記録を目的とするポートフォリオサイト。
-GitHub `RyutoShima/portfolio` が正本。制作ブランチは **site-v1**。mainの変更・本番公開は行っていません。
+GitHub `RyutoShima/portfolio` が正本。制作・GitHub Pages公開ブランチは **site-v1**。mainは変更していません。`site-v1` の更新は公開サイトに反映されます。
 
 ## 現在の状態
 
 2026-10-12：デザイン第2稿。黒背景・白文字、左ナビゲーション、PC4〜5列の画像一覧。
-追加調整：上部右にSVGロゴ、ホーム先頭にRyuto Shimaと提供画像を配置。Artist Biographyの直後にステイトメント（本文未提供）、次にAwardsとPresentation。ナビゲーションはHome / Works（7ジャンル）/ Contactの階層構成です。全20の作品・項目を指定順で登録し、作品のないPluginのみ「掲載準備中」。
+追加調整：上部右にSVGロゴ、ホーム先頭にRyuto Shimaと提供画像を配置。Artist Biographyの直後にステイトメント（本文未提供）、次にAwardsとPresentation。ナビゲーションはHome / Upcoming Events / Works（7ジャンル）/ Contactの階層構成です。Upcoming Eventsは予定未登録のため「掲載準備中」です。全20の作品・項目を指定順で登録し、作品のないPluginのみ「掲載準備中」。
 初版のローカル動作はユーザー確認済み。第2稿はコード・生成DOMの確認を実施し、ブラウザ実画面の確認は未実施です。
-公開方式とドメインは未決定です。
+GitHub Pagesにて https://ryutoshima.github.io/portfolio/ を公開済み（本人が表示確認）。公開元は `site-v1` の `/(root)` です。
 
-## GitHub Pages公開（ユーザー側の設定待ち）
+## GitHub Pages公開（設定済み）
 
 このサイトはビルド不要の静的HTML/CSS/JavaScriptです。公開時も `main` は変更せず、現時点で最新の実装を持つ `site-v1` のルートフォルダをGitHub Pagesの公開元として使用します。
 
@@ -19,9 +19,9 @@ GitHub `RyutoShima/portfolio` が正本。制作ブランチは **site-v1**。ma
 3. ブランチ `site-v1`、フォルダ `/(root)` を選び、`Save` を押す。
 4. Actionsで初回デプロイを確認し、Pages設定内の `Visit site` から開く。一般的なプロジェクトURLは `https://ryutoshima.github.io/portfolio/` だが、実際の公開URLは設定画面で確認する。
 
-注意：リポジトリは現在private。GitHub FreeでPagesを利用するにはpublicへの切替が必要（GitHub Pro等はprivateでも利用可能）。publicへの切替はGitHubリポジトリのソースコードも公開するため、ユーザーが自分で判断する。GitHub Pages自体は通常、privateリポジトリでも公開サイトとして閲覧可能。サイト公開後の `site-v1` への変更は原則として公開サイトに反映される。編集を公開前に確認する体制に変更する場合は、公開専用ブランチや `main` からのデプロイへ切り替える。
+リポジトリはpublicへ変更されており、Pagesは `site-v1` / `(root)` から公開済みです。`site-v1` に変更を反映すると公開サイトにも自動的に反映されます。公開前に別途レビューする運用にしたい場合は、公開専用ブランチ等への切替を検討してください。
 
-`.nojekyll` は静的ファイルを加工せずに配信するためのマーカーファイルです。README記載だけでは公開されません。Pages画面での設定・初回デプロイ成功の確認が必要です。
+`.nojekyll` は静的ファイルを加工せずに配信するためのマーカーファイルです。GitHub Pagesの公開サイトはユーザーが表示確認済みです。
 
 ## 手元で開く（Windows）
 
@@ -63,6 +63,7 @@ macOS/Linuxでは `py` を `python3` に置き換えます。
 - `index.html`：名義・ホーム画像・Artist Biography・ステイトメント（掲載準備中）・Awards・Presentation。メールアドレスは掲載しません。
 - `assets/home/home-photo.avif`：提供された445102.jpgをWeb向けに圧縮した画像（300×300px）。
 - `assets/brand/ryuto-shima-logo.svg`：右上に単独表示する提供ロゴ。
+- `upcoming.html`：今後の出演・展示予定（内容未提供のため掲載準備中）。
 - `works.html`：全ジャンルの作品一覧。`contact.html`：連絡先とmailtoリンク。
 - `genre.html?genre=design`：Designの3項目。
 - `genre.html?genre=sound-art`：サウンドアート・メディアアート一覧。

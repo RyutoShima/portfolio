@@ -1,6 +1,6 @@
 # Ryuto Shima — Portfolio Project Brief
 
-更新日: 2026-10-12（日本時間） / Rev. 1.0
+更新日: 2026-10-12（日本時間） / Rev. 1.1
 
 この文書は会話で確認した制作条件を記録する。運用ルールは PROJECT_GUIDE.md を参照する。提案を決定事項として扱わない。
 
@@ -40,7 +40,7 @@
 - 右上はユーザー提供SVGロゴのみ。名義はホーム本文の先頭に表示する。ロゴの形状・色・SVGデータは変更しない。
 - ホーム用画像として本人提供の445102.jpgを受領。300×300pxのWeb用AVIFに変換し、assets/home/home-photo.avifに配置する。元画像は変更しない。
 - Artist Biography本文、Awards 1件、Presentation 14件を2026-10-12のユーザー提供内容から掲載。表記・日付・提示順を保持。「Initinal Conditions」「Cell Automata Synthesizer」の2026/12も原文のまま。soil with(prototype)は日付未提供なので日付を表示しない。
-- ナビゲーションはHome → Works（子に Sound Art/Media Art、Music、Live Set、Instrument(Digital)、Instrument(Analog)、Plugin、Design の7分類）→ Contact。Worksをクリックすると全ジャンルの作品一覧を表示する。各ジャンルの作品は本人指定の順で追加。未提供画像・詳細は作らない。旧URL genre=synth は互換のため保持。
+- ナビゲーションはHome → Upcoming Events → Works（子に Sound Art/Media Art、Music、Live Set、Instrument(Digital)、Instrument(Analog)、Plugin、Design の7分類）→ Contact。Upcoming Eventsは今後の出演・展示予定を載せる独立ページで、詳細未提供につき「掲載準備中」。Worksをクリックすると全ジャンルの作品一覧を表示する。各ジャンルの作品は本人指定の順で追加。未提供画像・詳細は作らない。旧URL genre=synth は互換のため保持。
 - 全体の文字を約10〜20%拡大。本文16px、ナビ14px、PC作品名15px、補助情報13px。ホーム名義は32〜44px（モバイル34px）。
 - 個別ページは控えめな作品名と、写真・動画リンク・説明文の縦配置。提供されたYouTubeリンクを保持し、埋め込みは追加しない。
 - 日英フォント指定を分離し、日本語は通常の字間と読みやすい太さにする。
@@ -162,3 +162,9 @@
 | Design | Flow+er → NO NAME SOUND → Ryuto Shimaロゴ |
 
 既存3作品の写真は保持。その他は写真未登録と表示する。Instrument(Analog)の「In Progress」内部の3区分については今回掲載しない（ユーザーの制作メモ）。既存Live SetのYouTubeリンクは3公演との紐づけが不明のため、旧URL `work.html?id=live-set` にのみ残し、作品を捏造せず対応確認待ちとする。
+
+## 8. 公開・Upcoming Events（2026-10-12）
+
+- GitHub Pages公開済み。公開URL: https://ryutoshima.github.io/portfolio/ 。ユーザーが表示を確認済み。
+- リポジトリはpublic。Pages公開元は `site-v1` の `/(root)`。`main` は更新しない。`site-v1` の更新は公開サイトへ反映される。
+- HomeとWorksの間に `Upcoming Events` を追加し、`upcoming.html` へ遷移する。出演・展示等の日程、会場、イベント名は未提供なので仮情報を作らない。

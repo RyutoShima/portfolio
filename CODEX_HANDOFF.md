@@ -1,11 +1,11 @@
 # Codex引き継ぎ — Ryuto Shima Portfolio
 
-更新: 2026-10-12 / Rev. 0.6
+更新: 2026-10-12 / Rev. 0.7
 
 ## 最初に読むもの
 
 `PROJECT_GUIDE.md` → `PROJECT_BRIEF.md` → 本文書。最新のユーザー指示を優先する。
-GitHub `RyutoShima/portfolio` を正本とし、作業ブランチは **site-v1のみ**。mainの更新、マージ、本番公開、リポジトリの公開化は行わない。
+GitHub `RyutoShima/portfolio` を正本とし、作業ブランチは **site-v1のみ**。`main` の更新やマージは行わない。サイトはGitHub Pagesで公開済み、リポジトリはpublic。`site-v1` の変更は公開サイトへ反映される。
 
 ## 現状
 
@@ -13,7 +13,7 @@ GitHub `RyutoShima/portfolio` を正本とし、作業ブランチは **site-v1�
 - 第2稿では左ナビゲーション、4〜5列のPC作品一覧、写真と本文の縦配置へ変更。追加調整で全体の文字を約10〜20%拡大し、提供SVGロゴを使用。最新調整では右上のロゴのみの表示とし、名義はホーム先頭へ移した。
 - ホームはRyuto Shima → 提供写真 → Artist Biography → ステイトメント（掲載準備中）→ Awards → Presentation。連絡先は独立のContactページに移し、shima.ryuto.art@gmail.comをmailtoリンクで掲載。
 - 本人が提供した445102.jpgを元にassets/home/home-photo.avif（300×300px）としてホーム先頭に配置。元のJPEGには変更を加えない。
-- 左の階層ナビゲーションはHome / Works（7分類を字下げ表示）/ Contact。Worksクリックでジャンル別に全作品一覧を表示する。作品枠20件をユーザー指定順に登録、Pluginのみ「掲載準備中」。
+- 左の階層ナビゲーションはHome / Upcoming Events / Works（7分類を字下げ表示）/ Contact。Upcoming Eventsは `upcoming.html` で表示、詳細未提供のため「掲載準備中」。Worksクリックでジャンル別に全作品一覧を表示する。作品枠20件をユーザー指定順に登録、Pluginのみ「掲載準備中」。
 - HTML/CSS/通常のJavaScriptによる静的構成を継続。ビルド・パッケージのインストールは不要。
 - 今回は指定ブラウザ確認機能が利用できず、ブラウザでの実画面確認は未実施。第2稿の見た目はローカルで確認・調整する。
 
@@ -46,6 +46,7 @@ Live Setは https://youtu.be/gomq4a4tauA 。正式タイトル・日時・会場
 - `assets/home/home-photo.avif`：本人提供のホーム写真をWeb向けに圧縮した画像。画像自体を加工する意図ではない。
 - `works.html` / `src/works.js`：7ジャンルを縦にまとめた全作品一覧。
 - `contact.html`：独立した連絡先ページ。
+- `upcoming.html`：今後の出演・展示予定ページ。本人から詳細が提供されるまでプレースホルダーのみ。
 - `genre.html` / `src/genre.js`：ジャンル別一覧、未掲載・不正URL表示。
 - `src/work-grid.js`：共通の高密度作品グリッドと写真未登録表示。
 - `work.html` / `src/work.js`：作品詳細、戻るリンク、動画への外部リンク。
