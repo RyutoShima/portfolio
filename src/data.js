@@ -1,28 +1,14 @@
 window.PORTFOLIO_DATA = {
   genres: {
-    "sound-art": {
-      label: "サウンドアート・メディアアート",
-      works: ["self-amplifier", "self-listening-circuit", "no-name-sound"]
-    },
-    "music": {
-      label: "個人名義の楽曲（ボカロ）",
-      works: [],
-      status: "掲載準備中"
-    },
-    "synth": {
-      label: "自作シンセサイザー",
-      works: [],
-      status: "掲載準備中"
-    },
-    "design": {
-      label: "デザイン",
-      works: [],
-      status: "掲載準備中"
-    },
-    "live-set": {
-      label: "Live Set",
-      works: ["live-set"]
-    }
+    "sound-art": { label: "Sound Art/Media Art", works: ["self-amplifier", "self-listening-circuit", "no-name-sound"] },
+    "music": { label: "Music", works: [], status: "掲載準備中" },
+    "live-set": { label: "Live Set", works: ["live-set"] },
+    "instrument-digital": { label: "Instrument(Digital)", works: [], status: "掲載準備中" },
+    "instrument-analog": { label: "Instrument(Analog)", works: [], status: "掲載準備中" },
+    "plugin": { label: "Plugin", works: [], status: "掲載準備中" },
+    "design": { label: "Design", works: [], status: "掲載準備中" },
+    // Keep the original URL working for existing bookmarks; it is not in the navigation.
+    "synth": { label: "Instrument(Analog)", works: [], status: "掲載準備中" }
   },
 
   works: {

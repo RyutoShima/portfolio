@@ -49,12 +49,13 @@ a:focus-visible { outline: 1px solid var(--fg); outline-offset: 5px; }
 .meta + .work-item-title { margin-top: 3px; }
 .work-item:hover .work-item-title, .back-link:hover { text-decoration: underline; text-underline-offset: 4px; }
 .status-text { margin: 0; color: var(--muted); font-size: 15px; }
-.home-title { margin: 0 0 38px; padding-right: 80px; font-size: clamp(32px, 3.2vw, 44px); font-weight: 600; line-height: 1.2; }
-.history-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px; }
-.history-list li { display: grid; grid-template-columns: 76px minmax(0, 1fr); gap: 18px; align-items: baseline; line-height: 1.8; }
+.home-title { margin: 0 0 24px; padding-right: 80px; font-size: clamp(32px, 3.2vw, 44px); font-weight: 600; line-height: 1.2; }
+.home-image { display: block; width: min(280px, 100%); height: auto; margin: 0 0 38px; }
+.history-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.history-list li { display: grid; grid-template-columns: 76px minmax(0, 1fr); gap: 18px; align-items: baseline; line-height: 1.55; }
 .history-date { font-size: 14px; color: var(--muted); white-space: nowrap; }
 .history-list li > div { min-width: 0; overflow-wrap: anywhere; }
-.history-detail { display: block; color: var(--muted); font-size: 14px; }
+.history-detail { display: block; color: var(--muted); font-size: 14px; line-height: 1.55; }
 .home-sections { display: flex; flex-direction: column; gap: 48px; max-width: 44rem; }
 .home-section-title { margin: 0 0 14px; font-size: 20px; font-weight: 500; line-height: 1.6; }
 .home-section p { margin: 0; line-height: 1.9; overflow-wrap: anywhere; }
@@ -80,7 +81,8 @@ a:focus-visible { outline: 1px solid var(--fg); outline-offset: 5px; }
 @media (max-width: 760px) {
   .site-header { top: 20px; right: 20px; }
   .brand-logo { width: 64px; height: 45px; }
-  .home-title { padding-right: 0; font-size: 34px; margin-bottom: 32px; }
+  .home-title { padding-right: 0; font-size: 34px; margin-bottom: 24px; }
+  .home-image { width: min(260px, 100%); margin-bottom: 30px; }
   .home-sections { gap: 38px; }
   .history-list li { grid-template-columns: 66px minmax(0, 1fr); gap: 12px; }
   .site-layout { display: block; padding: 24px 20px 48px; }

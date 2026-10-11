@@ -17,16 +17,18 @@
     <aside class="sidebar">
       <nav class="site-nav" aria-label="メインナビゲーション">
         <a href="index.html" data-page="home">ホーム</a>
-        <a href="genre.html?genre=sound-art" data-genre="sound-art">サウンドアート・メディアアート</a>
-        <a href="genre.html?genre=music" data-genre="music">個人名義の楽曲（ボカロ）</a>
-        <a href="genre.html?genre=synth" data-genre="synth">自作シンセサイザー</a>
+        <a class="latin" href="genre.html?genre=sound-art" data-genre="sound-art">Sound Art/Media Art</a>
+        <a class="latin" href="genre.html?genre=music" data-genre="music">Music</a>
         <a class="latin" href="genre.html?genre=live-set" data-genre="live-set">Live Set</a>
-        <a href="genre.html?genre=design" data-genre="design">デザイン</a>
+        <a class="latin" href="genre.html?genre=instrument-digital" data-genre="instrument-digital">Instrument(Digital)</a>
+        <a class="latin" href="genre.html?genre=instrument-analog" data-genre="instrument-analog">Instrument(Analog)</a>
+        <a class="latin" href="genre.html?genre=plugin" data-genre="plugin">Plugin</a>
+        <a class="latin" href="genre.html?genre=design" data-genre="design">Design</a>
       </nav>
     </aside>
     <main id="main" class="page-shell home-page" tabindex="-1">
       <h1 class="home-title latin">Ryuto Shima</h1>
-      <!-- ホーム用アイコン画像は今回未着。受領後、名義とArtist Biographyの間に追加する。 -->
+      <img class="home-image" src="assets/home/home-photo.avif" width="300" height="300" alt="ホーム掲載写真" decoding="async">
       <div class="home-sections">
         <section class="home-section" aria-labelledby="biography-title">
           <h2 id="biography-title" class="home-section-title latin">Artist Biography</h2>
@@ -65,8 +67,7 @@
         </section>
         <section class="home-section" aria-labelledby="contact-title">
           <h2 id="contact-title" class="home-section-title">連絡先</h2>
-          <!-- 公開用として指定された連絡先に差し替える。 -->
-          <p class="status-text">掲載準備中</p>
+          <p><a class="latin" href="mailto:shima.ryuto.art@gmail.com">shima.ryuto.art@gmail.com</a></p>
         </section>
       </div>
     </main>

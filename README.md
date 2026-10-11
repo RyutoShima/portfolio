@@ -6,7 +6,7 @@ GitHub `RyutoShima/portfolio` が正本。制作ブランチは **site-v1**。ma
 ## 現在の状態
 
 2026-10-12：デザイン第2稿。黒背景・白文字、左ナビゲーション、PC4〜5列の画像一覧。
-追加調整：右上はSVGロゴのみ、ホーム先頭は大きめのRyuto Shima。提供されたArtist Biography・Awards・Presentationを掲載しました。分類は「デザイン」を追加した5分類です。独立したステイトメント・公開用連絡先・デザイン作品は未提供のため「掲載準備中」です。ホーム用の別アイコン画像は未着のため追加待ちです。
+追加調整：右上はSVGロゴのみ、ホーム先頭は大きめのRyuto Shima。提供されたArtist Biography・Awards・Presentationを掲載しました。分類は Sound Art/Media Art、Music、Live Set、Instrument(Digital)、Instrument(Analog)、Plugin、Design の7分類です。独立したステイトメントと未提供作品は「掲載準備中」。連絡先には指定されたメールアドレス、ホームには提供写真を配置しています。
 初版のローカル動作はユーザー確認済み。第2稿はコード・生成DOMの確認を実施し、ブラウザ実画面の確認は未実施です。
 公開方式とドメインは未決定です。
 
@@ -47,7 +47,8 @@ macOS/Linuxでは `py` を `python3` に置き換えます。
 
 ビルド不要のHTML/CSS/JavaScriptです。依存ライブラリのインストールは不要です。
 
-- `index.html`：名義・Artist Biography・Awards・Presentation・ステイトメント・連絡先。ホーム用画像は受領後、名義とArtist Biographyの間に追加します。経歴の表記・日付はユーザー指定を保持します。
+- `index.html`：名義・ホーム画像・Artist Biography・Awards・Presentation・ステイトメント・メールアドレス。経歴の表記・日付はユーザー指定を保持します。
+- `assets/home/home-photo.avif`：提供された445102.jpgをWeb向けに圧縮した画像（300×300px）。
 - `assets/brand/ryuto-shima-logo.svg`：右上に単独表示する提供ロゴ。
 - `genre.html?genre=design`：デザイン一覧（掲載準備中）。
 - `genre.html?genre=sound-art`：サウンドアート・メディアアート一覧。
