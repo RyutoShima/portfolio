@@ -12,7 +12,6 @@ window.renderPortfolioWorkGrid = function (workIds) {
 
     const media = document.createElement("div");
     media.className = "work-media";
-    if (work.genre === "sound-art") media.classList.add("work-media--portrait");
     if (work.image) {
       const img = document.createElement("img");
       img.src = work.image;

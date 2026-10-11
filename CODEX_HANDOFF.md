@@ -1,6 +1,6 @@
 # Codex引き継ぎ — Ryuto Shima Portfolio
 
-更新: 2026-10-12 / Rev. 0.8
+更新: 2026-10-12 / Rev. 0.9
 
 ## 最初に読むもの
 
@@ -60,7 +60,7 @@ Live Setは https://youtu.be/gomq4a4tauA 。正式タイトル・日時・会場
 - 本文16px、ナビ14px、PC作品名15px、補助13px。ホーム名義32〜44px（モバイル34px）、ホーム画像最大280px（モバイル260px）。右上ロゴ72×51px（モバイル64×45px）。Awards・Presentationは行間1.55、行間隔8px。
 - 1100〜1439pxで4列、1440px以上で5列。761〜1099pxは3列。
 - 760px以下はナビゲーションを上部へ。360〜760pxで2列、359px以下で1列。
-- Sound Art/Media Artの一覧画像枠は縦3:4、他は横4:3でcontain・左上寄せ。画像全体を表示するため下や右に余白が生じる場合がある。
+- 一覧画像枠は全ジャンルで横4:3、contain・左上寄せ。01写真の実寸も全7作品が横4:3。
 - 個別作品本文は最大1120px、写真は最大85svh。画像・動画リンク・文章を縦配置。
 
 ## 更新・確認
@@ -75,6 +75,11 @@ Live Setは https://youtu.be/gomq4a4tauA 。正式タイトル・日時・会場
 
 - 7作品に `src/data.js` の `image`（各フォルダ01）と `media`（ファイル番号順に画像・動画を混在）を設定。写真23枚＋MP4動画7本。
 - マッピング：Light with MK1 → `Light with MK1`（01.png〜02.png）、自己増幅器 → `self-amplifier`（01.JPG〜05.mp4）、Light with MK2 → `light-with-mk2`（01.jpg〜05.jpg）、自己増幅器（再展示） → `self-amplifier-re`（01.jpg〜05.mp4）、自己聴取回路 → `self-listening-circuit`（01.jpg〜03.jpg/mp4）、soil with(prototype) → `soil-with`（01.jpg〜02.mp4）、NO NAME SOUND → `no-name-sound`（01.jpg〜08.jpg/mp4）。
-- 各作品の01サムネイルの実測比率は6枚が縦3:4、Light with MK1のみ横4:3。写真をトリミングせず3:4枠に表示。
+- 各作品の01サムネイルの画像実寸はすべて横4:3。以前の「6枚が縦3:4」という記述はJPEGヘッダの縦横を逆に解釈した誤り。写真をトリミングせず4:3枠に表示。
 - 動画はコントロールあり、プリロードはmetadata、オートプレイなし。MP4コーデックのブラウザ互換性は実ブラウザで要確認。
 - `site-v1` のみ変更。既存の素材本体・旧ファイル・`main` は変更しない。
+
+## サムネイル下の余白修正（2026-10-12）
+
+- Sound Art/Media Artの7作品は実画像がすべて横4:3なのに、縦3:4のCSS枠を与えたため、一覧で写真からタイトルまで大きな余白が発生した。
+- `src/styles.css` の `.work-media--portrait` を廃止し、`src/work-grid.js` の同クラス付与も削除。全作品で元の横4:3枠を使用。作品タイトルとの間隔は元々設定された9pxに戻る。

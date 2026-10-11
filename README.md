@@ -88,14 +88,14 @@ macOS/Linuxでは `py` を `python3` に置き換えます。
 
 現在の作品情報・画像対応を推測で変更しないでください。ホーム本文はindex.htmlで編集します。公開用として指定されていないメールアドレスやSNSは掲載しません。共通ナビは `src/site.js` が生成します。項目・順序は `src/data.js` の `navigationGenres` と各ジャンルの `works` 配列で編集します。
 
-写真未提供の項目では、装飾のない画像領域に「画像未登録」と表示します。Sound Art/Media Artのサムネイル枠は縦3:4、それ以外は横4:3です。新しいLive Set3件と、以前のYouTubeリンクとの対応は未確認です。従来の `work.html?id=live-set` に動画リンクを保持し、新しい3件へ推測で割り当てていません。「自己増幅器(再展示)」、およびSound ArtとDesignの同名作品は別IDで登録しています。
+写真未提供の項目では、装飾のない画像領域に「画像未登録」と表示します。サムネイル枠は全ジャンルで横4:3です。新しいLive Set3件と、以前のYouTubeリンクとの対応は未確認です。従来の `work.html?id=live-set` に動画リンクを保持し、新しい3件へ推測で割り当てていません。「自己増幅器(再展示)」、およびSound ArtとDesignの同名作品は別IDで登録しています。
 
 ## Sound Art/Media Artのメディア登録（2026-10-12）
 
 - 7作品の `01` を一覧とWorks内のサムネイルに指定。`src/data.js` の `image` が一覧用、`media` が詳細ページに表示する写真・動画の番号順配列。
 - 詳細ページの `src/work.js` は `media` 配列内の画像（JPEG/PNG）と動画（MP4など）を順番に描画する。動画はクリックで再生できるコントロール付きで、勝手に再生しない。従来の `images` / `image` とYouTubeリンクも維持。
 - 作品ごとのフォルダは `assets/works/Light with MK1/`、`light-with-mk2/`、`self-amplifier/`、`self-amplifier-re/`、`self-listening-circuit/`、`soil-with/`、`no-name-sound/`。ファイル名の大小文字に注意。サムネイルはすべて各フォルダ内の01を使用する。
-- Sound Art/Media Artの一覧枠のみ3:4。01画像のうち6作品は3:4の縦長で、Light with MK1だけは4:3の横長。どちらも `object-fit: contain` でトリミングしないため、Light with MK1には上下または左右の余白が生じる。
+- Sound Art/Media Artの01画像は7作品とも横4:3（JPEG/PNGヘッダ実寸を再確認済み）。一覧枠も横4:3に統一し、写真とタイトルの間に不必要な空白が生じないようにする。`object-fit: contain` でトリミングしない。以前の「6作品は縦3:4」という記載はJPEG寸法の読み取り時に縦横を取り違えた誤り。
 - 旧単体画像 `assets/works/self-amplifier.jpg` などは削除せず残す。新しく作品フォルダへ画像や動画を追加した際は `src/data.js` の `media` 配列も更新する。ファイルの存在だけでは自動掲載されない。
 
 ## 作業前に読む文書
