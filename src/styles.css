@@ -112,6 +112,7 @@ a:focus-visible { outline: 1px solid var(--fg); outline-offset: 5px; }
 .work-gallery-arrow:focus-visible, .work-gallery-thumb:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
 .work-gallery-controls { display: flex; gap: 18px; align-items: flex-start; margin-top: 14px; min-width: 0; }
 .work-gallery-thumbnails {
+  position: relative;
   display: flex;
   flex: 1 1 auto;
   gap: 10px;

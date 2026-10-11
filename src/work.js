@@ -45,6 +45,7 @@
     viewer.appendChild(screen);
 
     const thumbnails = [];
+    let thumbnailStrip = null;
     let activeIndex = 0;
     let startTouch = null;
 
@@ -84,9 +85,19 @@
         button.setAttribute("aria-pressed", thumbIndex === activeIndex ? "true" : "false");
       });
       if (counter) counter.textContent = (activeIndex + 1) + " / " + sources.length;
+      // Keep the chosen square thumbnail visible without scrolling the whole page.
       const selected = thumbnails[activeIndex];
-      if (selected && selected.scrollIntoView) {
-        selected.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "nearest" });
+      if (selected && thumbnailStrip && thumbnailStrip.scrollTo) {
+        const start = selected.offsetLeft;
+        const end = start + selected.offsetWidth;
+        const visibleStart = thumbnailStrip.scrollLeft;
+        const visibleEnd = visibleStart + thumbnailStrip.clientWidth;
+        if (start < visibleStart || end > visibleEnd) {
+          thumbnailStrip.scrollTo({
+            left: Math.max(0, start - (thumbnailStrip.clientWidth - selected.offsetWidth) / 2),
+            behavior: "smooth"
+          });
+        }
       }
     }
 
@@ -140,6 +151,7 @@
 
       const strip = document.createElement("div");
       strip.className = "work-gallery-thumbnails";
+      thumbnailStrip = strip;
       strip.setAttribute("role", "group");
       strip.setAttribute("aria-label", "写真・動画のサムネイル");
 
