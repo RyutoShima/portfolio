@@ -12,6 +12,7 @@ window.renderPortfolioWorkGrid = function (workIds) {
 
     const media = document.createElement("div");
     media.className = "work-media";
+    if (work.genre === "music") media.classList.add("work-media--music");
     if (work.image) {
       const img = document.createElement("img");
       img.src = work.image;

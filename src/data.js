@@ -175,12 +175,14 @@ window.PORTFOLIO_DATA = {
     "initinal-conditions": {
       "title": "Initinal Conditions",
       "genre": "music",
+      "image": "assets/works/initinal-conditions/thumbnail.webp",
       "media": ["https://www.nicovideo.jp/watch/sm45779154?ref=garage_share_other"]
     },
     "ore-vs-hatsune-miku": {
       "title": "俺VS初音ミク",
       "genre": "music",
-      "media": ["https://www.nicovideo.jp/watch/sm45779154?ref=garage_share_other"]
+      "image": "assets/works/ore-vs-hatsune-miku/thumbnail.webp",
+      "media": ["https://www.nicovideo.jp/watch/sm46671767?ref=garage_share_other"]
     },
     "ozm-sis-vol-3": {
       "title": "ozm_sis vol.3",

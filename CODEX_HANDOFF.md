@@ -118,3 +118,10 @@ Live Setは https://youtu.be/gomq4a4tauA 。正式タイトル・日時・会場
 - `src/work.js` の `getNiconicoId` が正規URLの `sm/so/nm` IDを検証し、`https://embed.nicovideo.jp/watch/...` に埋め込み。選択変更時はiframeをDOMから除去して停止。外部リンクも設置し、埋め込み不可時に利用可能。
 - Nicoのサムネイルは独自の動画画像URLを推定せず、四角い「NICO」プレースホルダー＋再生アイコン。メディアが1件なら従来ギャラリー仕様によりサムネイル列は出さない。
 - YouTube・MP4・写真・他の作品情報は変更せず、`main` は不変更。
+
+## Music 作品サムネイル・動画URLの訂正（2026-10-12）
+
+- ユーザーの訂正を反映：`俺VS初音ミク` の動画は `sm46671767`、`Initinal Conditions` は `sm45779154`。前回の両作品が同じURLという確認待ちは解消済み。
+- 提供1枚目 `frame_000062.png` を1280×720 WebPに変換し `assets/works/ore-vs-hatsune-miku/thumbnail.webp`、2枚目 `スクリーンショット 2026-10-12 215830.png` を同条件で `assets/works/initinal-conditions/thumbnail.webp` としてGitHubに保存。元画像の内容は変更せず画像サイズ/ファイル形式のみWeb向け最適化。
+- `src/data.js` のMusic 2作品の `image` に指定。`src/work-grid.js` にmusic用クラスを追加し `src/styles.css` でMusic一覧のみ横16:9、他は横4:3を維持。作品詳細の左側は従来どおりニコニコ埋め込み（静止画は一覧のサムネイルのみ）。
+- `main` ブランチは変更しない。

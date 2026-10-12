@@ -124,9 +124,15 @@ macOS/Linuxでは `py` を `python3` に置き換えます。
 
 ## Music作品のニコニコ動画埋め込み（2026-10-12）
 
-- ユーザーが `俺VS初音ミク` と `Initinal Conditions` の両方に同じ `https://www.nicovideo.jp/watch/sm45779154?ref=garage_share_other` を指定したため、両方の `media` に登録。誤記の可能性は残り、本人に確認待ち。
+- ニコニコURL訂正済み：`俺VS初音ミク` → `https://www.nicovideo.jp/watch/sm46671767?ref=garage_share_other`、`Initinal Conditions` → `https://www.nicovideo.jp/watch/sm45779154?ref=garage_share_other`。
 - `src/work.js` はニコニコ動画の `sm/so/nm` 動画URLを認識し、選択中のみ `https://embed.nicovideo.jp/watch/{id}` をiframeで表示する。単独動画の作品ではメインに直接表示。YouTube・MP4・画像ギャラリーは維持。
 - 他の写真等と混在する場合は、下段に再生マーク付きの正方形 `NICO` サムネイルを用いる（公式の動画別サムネイルURLは受領していない）。埋め込みが制限された場合のため、ギャラリー下にニコニコ本体へ移動するリンクも表示する。
+
+## Music作品のサムネイル（2026-10-12）
+
+- 本人提供の1枚目を `assets/works/ore-vs-hatsune-miku/thumbnail.webp`、2枚目を `assets/works/initinal-conditions/thumbnail.webp` にWeb向け1280×720 WebPで収録。
+- `src/data.js` の各作品の `image` に登録。一覧カードの画像にのみ使用し、個別作品ギャラリーでは従来の埋め込み動画を維持する。
+- Musicジャンルのサムネイル枠は16:9とし、他ジャンルの4:3設定はそのまま。 `works.html` と `genre.html?genre=music` の共通グリッドに適用。画像の比率を保持しトリミングしない。
 
 ## 作業前に読む文書
 
