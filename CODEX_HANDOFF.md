@@ -1,6 +1,6 @@
 # Codex引き継ぎ — Ryuto Shima Portfolio
 
-更新: 2026-10-12 / Rev. 1.1
+更新: 2026-10-12 / Rev. 1.2
 
 ## 最初に読むもの
 
@@ -97,3 +97,9 @@ Live Setは https://youtu.be/gomq4a4tauA 。正式タイトル・日時・会場
 - `src/data.js` の `light-with-mk1` にユーザーの日本語原文を `descriptionJa`、より自然に整えた英語訳を `descriptionEn` として登録。タイトルは本人提供の `音＿機構 Vol.1 「Light with」` に更新。既存の歴史・発表欄、MK2の名称はそのまま。
 - CSSはPCで約54:46の2カラム、画像表示領域は横4:3でメイン画像全体表示、左側はデスクトップでsticky。サムネイル列は元のまま。本文の多い作品でもPCで右カラムの縦スクロールが可能。
 - 従来の `description`、メディア無し、外部YouTubeリンクもサポート。既存画像やMP4には変更しない。
+
+## Light with MK1 YouTube埋め込み（2026-10-12）
+
+- `src/data.js` の `light-with-mk1.media` 配列末尾に提供された `https://www.youtube.com/watch?v=W2zCHxJaOSc` を追加。写真01、02、YouTubeの順で、01を作品一覧のサムネイルに維持。
+- `src/work.js` はYouTube共有URLから11文字のIDを検証・抽出。画像/MP4と同じスライド内にプライバシー強化型埋め込みiframeを表示し、下段に動画サムネイルと再生アイコンを表示。別スライドへの切替時にiframeがDOMから破棄され再生が停止。URLは画像ファイルとして誤判定されないよう優先処理。
+- `src/styles.css` にYouTubeプレイヤー16:9・枠なし指定。既存2カラムとレスポンシブ構成を維持。埋め込み禁止、地域制限、YouTube側エラーは公開ブラウザで確認する。

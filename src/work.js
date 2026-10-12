@@ -61,6 +61,24 @@
       return /\.(?:mp4|webm|ogg)(?:[?#]|$)/i.test(source);
     }
 
+    // YouTube URLs are embedded only when their slide is selected.
+    function getYouTubeId(source) {
+      try {
+        const url = new URL(source);
+        const host = url.hostname.toLowerCase();
+        let id = null;
+        if (host === "youtu.be" || host === "www.youtu.be") {
+          id = url.pathname.split("/")[1];
+        } else if (["youtube.com", "www.youtube.com", "m.youtube.com", "www.youtube-nocookie.com", "youtube-nocookie.com"].includes(host)) {
+          if (url.pathname === "/watch") id = url.searchParams.get("v");
+          if (/^\/(?:embed|shorts|live)\//.test(url.pathname)) id = url.pathname.split("/")[2];
+        }
+        return id && /^[a-zA-Z0-9_-]{11}$/.test(id) ? id : null;
+      } catch (error) {
+        return null;
+      }
+    }
+
     function selectMedia(index) {
       if (index < 0 || index >= sources.length || index === activeIndex && screen.firstChild) return;
       const previousVideo = screen.querySelector("video");
@@ -68,8 +86,17 @@
 
       activeIndex = index;
       const source = sources[index];
+      const youtubeId = getYouTubeId(source);
       let media;
-      if (isVideo(source)) {
+      if (youtubeId) {
+        media = document.createElement("iframe");
+        media.src = "https://www.youtube-nocookie.com/embed/" + youtubeId;
+        media.title = work.title + " — YouTube動画 " + (index + 1);
+        media.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+        media.allowFullscreen = true;
+        media.referrerPolicy = "strict-origin-when-cross-origin";
+        media.loading = "lazy";
+      } else if (isVideo(source)) {
         media = document.createElement("video");
         media.src = source;
         media.controls = true;
@@ -86,7 +113,7 @@
         media.alt = work.title + " — 画像 " + (index + 1);
         media.decoding = "async";
       }
-      media.className = "work-gallery-main-media";
+      media.className = "work-gallery-main-media" + (youtubeId ? " work-gallery-youtube" : "");
       screen.replaceChildren(media);
 
       thumbnails.forEach(function (button, thumbIndex) {
@@ -164,14 +191,28 @@
       strip.setAttribute("aria-label", "写真・動画のサムネイル");
 
       sources.forEach(function (source, index) {
+        const youtubeId = getYouTubeId(source);
         const videoItem = isVideo(source);
         const button = document.createElement("button");
         button.type = "button";
         button.className = "work-gallery-thumb";
-        button.setAttribute("aria-label", (videoItem ? "動画 " : "画像 ") + (index + 1) + " を表示");
+        button.setAttribute("aria-label", (youtubeId ? "YouTube動画 " : videoItem ? "動画 " : "画像 ") + (index + 1) + " を表示");
         button.setAttribute("aria-pressed", index === 0 ? "true" : "false");
 
-        if (videoItem) {
+        if (youtubeId) {
+          const preview = document.createElement("img");
+          preview.className = "work-gallery-thumb-media";
+          preview.src = "https://i.ytimg.com/vi/" + youtubeId + "/hqdefault.jpg";
+          preview.alt = "";
+          preview.loading = "lazy";
+          button.appendChild(preview);
+
+          const mark = document.createElement("span");
+          mark.className = "work-gallery-thumb-play";
+          mark.textContent = "▶";
+          mark.setAttribute("aria-hidden", "true");
+          button.appendChild(mark);
+        } else if (videoItem) {
           const preview = document.createElement("video");
           preview.className = "work-gallery-thumb-media";
           preview.src = source + "#t=0.1";

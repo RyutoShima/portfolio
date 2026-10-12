@@ -83,7 +83,8 @@ window.PORTFOLIO_DATA = {
       "image": "assets/works/Light with MK1/01.png",
       "media": [
         "assets/works/Light with MK1/01.png",
-        "assets/works/Light with MK1/02.png"
+        "assets/works/Light with MK1/02.png",
+        "https://www.youtube.com/watch?v=W2zCHxJaOSc"
       ]
     },
     "self-amplifier": {

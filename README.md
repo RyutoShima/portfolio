@@ -105,6 +105,12 @@ macOS/Linuxでは `py` を `python3` に置き換えます。
 - 作品詳細はPCで左に横幅約54%のギャラリー、右にタイトル・説明文。日本語→英語の順に言語別の小見出しと段落を表示。小画面はタイトル→ギャラリー→説明文。`src/work.js` は既存の `description` 形式や外部リンクにも対応する。
 - `site-v1` にのみ反映。写真・動画そのものや作品一覧の順序は変更しない。
 
+## YouTube動画の作品ギャラリー埋め込み（2026-10-12）
+
+- 音＿機構 Vol.1「Light with」の `media` 配列の3番目に本人提供の YouTube URL `https://www.youtube.com/watch?v=W2zCHxJaOSc` を追加。1番目の01.pngを一覧のサムネイルとして維持。
+- `src/work.js` は既存の画像／MP4に加えYouTube URLを動画として認識し、選択時だけ `youtube-nocookie.com` の iframe を左側のギャラリーに表示。下段はYouTubeサムネイルと再生アイコン。次のスライドに移動するとiframeを破棄し再生を停止する。自動再生なし。
+- YouTube側の埋め込み制限や利用者の通信環境により再生できない場合がある。外部リンクが必要ならURLを別途掲示できる。
+
 ## 作業前に読む文書
 
 1. PROJECT_GUIDE.md：共通運用ルール。
