@@ -89,6 +89,10 @@ window.PORTFOLIO_DATA = {
     },
     "self-amplifier": {
       "title": "自己増幅器",
+      "titleEn": "Self-expansion",
+      "descriptionJa": "フィールドレコーディングにおいて、作品を録音し、制作する「場」と、作品を鑑賞する「場」が乖離していることが多い。\n\nどうしても、作品が曲という形態を取る以上、人が場そのものに触れる機会はほとんど無く、イヤホンやスピーカーで聞いてしまえば終わりである。\n\nここでは、「過去に録音された音が作品として存在する」ことと、「鑑賞者が作曲者である状況」の両立という、「場の重ね合わせ」を目指す。\n\n己の呼吸に、足音に、心拍に、出す全ての音に、耳を傾けましょう。",
+      "descriptionEn": "In field recording, the place where a work is recorded and created is often separate from the place where it is experienced.\n\nWhen recorded sounds take the form of a finished piece, listeners rarely have the opportunity to encounter the original space itself. The experience begins and ends with what they hear through headphones or speakers.\n\nThis work seeks a “superposition of spaces,” bringing together sounds recorded in the past and a situation in which the listener becomes the composer.\n\nListen to your own breath, your footsteps, your heartbeat—to every sound you make.",
+      "exhibition": {"dates":"2025.10.04–10.05","venue":["福岡市立南市民センター","福岡市塩原音楽・演劇練習室"],"event":"Minamiku Art Next Collection","award":"モンブランピクチャーズ賞受賞作品"},
       "genre": "sound-art",
       "image": "assets/works/self-amplifier/01.JPG",
       "media": [
@@ -100,7 +104,10 @@ window.PORTFOLIO_DATA = {
       ]
     },
     "light-with-mk2": {
-      "title": "音＿機構「Light with MK2」",
+      "title": "音＿機構 Vol.1 「Light with MK2」",
+      "descriptionJa": "光と音。私達の世界を支配する二つの感覚。これは相互作用しながら我々の知覚を満たす。\n\n光とは短期記憶への依存が少なく、現在をあるがままに映し出す。半面、音はワーキングメモリへの依存が大きく、現在の知覚は過去の記憶に依存する。\n\nここでは、光、つまり視覚に伴う情報が直接音を変化させる場合について考える。往々にして楽器を演奏する人間というのは、「手元を見るな」と言われたことがあるだろう。これはつまり、演奏というのが本質的に「感覚」に依存することを示している。しかし、これは結果的に演奏という行為の崇高さへとつながる。ここでは、視覚に依存した演奏を用いて、演奏の敷居を下げ、かつ、光と音、過去と現在の境界が希薄化した状態を目指す。ここから、「面白さ」を感じ取ってくれると嬉しい。",
+      "descriptionEn": "Light and sound shape how we experience the world. Though we perceive them through different senses, they continually interact in shaping our perception.\n\nVision relies comparatively little on short-term memory, presenting the immediate moment as it appears. Sound, by contrast, depends more heavily on working memory: what we hear in the present is shaped by what we have heard in the past.\n\nThis work explores what happens when light—that is, visual information—directly changes sound. Anyone who has played a musical instrument may have been told, “Don't look at your hands.” Such advice suggests that musical performance is fundamentally grounded in sensory intuition. At the same time, that reliance on intuition can contribute to the sense of refinement and mastery associated with performance. By making visual perception an integral part of playing, this work seeks to make performance more accessible while blurring the boundaries between light and sound, and between past and present. I hope it offers a sense of discovery and intrigue.",
+      "exhibition": {"dates":"2025.11.10–11.14","venue":["九州大学芸術工学部 芸工図書館映像音響ラウンジ"]},
       "genre": "sound-art",
       "image": "assets/works/light-with-mk2/01.jpg",
       "media": [
@@ -112,7 +119,11 @@ window.PORTFOLIO_DATA = {
       ]
     },
     "self-amplifier-reexhibition": {
-      "title": "自己増幅器(再展示)",
+      "title": "自己増幅器（再展示）",
+      "titleEn": "Self-expansion (Re-exhibition)",
+      "descriptionJa": "フィールドレコーディングにおいて、作品を録音し、制作する「場」と、作品を鑑賞する「場」が乖離していることが多い。\n\nどうしても、作品が曲という形態を取る以上、人が場そのものに触れる機会はほとんど無く、イヤホンやスピーカーで聞いてしまえば終わりである。\n\nここでは、「過去に録音された音が作品として存在する」ことと、「鑑賞者が作曲者である状況」の両立という、「場の重ね合わせ」を目指す。\n\n己の呼吸に、足音に、心拍に、出す全ての音に、耳を傾けましょう。",
+      "descriptionEn": "In field recording, the place where a work is recorded and created is often separate from the place where it is experienced.\n\nWhen recorded sounds take the form of a finished piece, listeners rarely have the opportunity to encounter the original space itself. The experience begins and ends with what they hear through headphones or speakers.\n\nThis work seeks a “superposition of spaces,” bringing together sounds recorded in the past and a situation in which the listener becomes the composer.\n\nListen to your own breath, your footsteps, your heartbeat—to every sound you make.",
+      "exhibition": {"dates":"2025.12.12–12.14","venue":["Artist Cafe Fukuoka"],"event":"Minamiku Art Next Award Re Collection","award":"モンブランピクチャーズ賞受賞作品"},
       "genre": "sound-art",
       "image": "assets/works/self-amplifier-re/01.jpg",
       "media": [
@@ -125,6 +136,8 @@ window.PORTFOLIO_DATA = {
     },
     "self-listening-circuit": {
       "title": "自己聴取回路",
+      "titleEn": "Self-hearing Circuit",
+      "exhibition": {"dates":"2026.01.24–01.25","hours":"10:00–17:00","venue":["九州大学大橋キャンパス"]},
       "genre": "sound-art",
       "image": "assets/works/self-listening-circuit/01.jpg",
       "media": [
@@ -134,7 +147,7 @@ window.PORTFOLIO_DATA = {
       ]
     },
     "soil-with-prototype": {
-      "title": "soil with(prototype)",
+      "title": "音＿機構「soil with」",
       "genre": "sound-art",
       "image": "assets/works/soil-with/01.jpg",
       "media": [
@@ -144,6 +157,8 @@ window.PORTFOLIO_DATA = {
     },
     "no-name-sound": {
       "title": "NO NAME SOUND",
+      "descriptionJa": "Ian Hackingは、名称やカテゴリーによる分類が、対象を単に説明するだけでなく、分類された対象そのものに作用し、そのあり方を変化させていくと考えた。\n\n現代の音楽シーンでは、ジャンル名、プリセット名、サンプル名などが過剰に細分化され、流通している。音を固定し、識別するために与えられたはずの名前は、再解釈され、共有され、拡散されるなかで、次第にその指示対象を曖昧にしていく。名前だけが先行し、それが実際に何を指しているのかは、もはや一意には定まらない。\n\n名づけは本来、対象の境界を明確にするために行われる。しかし、人というフィルターを通り続けることで、名前は対象を固定するどころか、むしろその境界を不安定にする。\n\n本作では、このような名づけの作用を、強力なフラッシュとして扱う。フラッシュは明暗によって空間の境界を一瞬浮かび上がらせる。しかし、その光は観客の介入によって遮られ、分散し、不明瞭になる。そこに生じる境界の揺らぎは音へと変換され、さらに微弱な光として装置へ還元される。\n\nNO NAME SOUNDは、名前によって固定されるはずだったものが、むしろ不安定な境界として現れる瞬間を、光と音によって提示する。",
+      "exhibition": {"dates":"2026.06.17–06.21","hours":"11:00–19:00（最終日は16:00まで）","venue":["Artist Cafe Fukuoka（スタジオ2）"],"event":"ACF Open Call Program","admission":"入場無料"},
       "genre": "sound-art",
       "image": "assets/works/no-name-sound/01.jpg",
       "media": [

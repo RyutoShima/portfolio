@@ -36,6 +36,12 @@ window.renderPortfolioWorkGrid = function (workIds) {
     name.className = "work-item-title";
     if (/^[\x00-\x7F]+$/.test(work.title)) name.classList.add("latin");
     name.textContent = work.title;
+    if (work.titleEn) {
+      const english = document.createElement("span");
+      english.className = "work-item-title-en latin";
+      english.textContent = " / " + work.titleEn;
+      name.appendChild(english);
+    }
     link.appendChild(name);
     if (work.externalUrl) {
       const note = document.createElement("p");

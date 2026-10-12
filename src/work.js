@@ -27,14 +27,50 @@
   title.className = "work-title";
   if (/^[\x00-\x7F]+$/.test(work.title)) title.classList.add("latin");
   title.textContent = work.title;
+  if (work.titleEn) {
+    const english = document.createElement("span");
+    english.className = "work-title-en latin";
+    english.textContent = " / " + work.titleEn;
+    title.appendChild(english);
+  }
   heading.appendChild(title);
-  document.title = work.title + " — Ryuto Shima";
+  document.title = work.title + (work.titleEn ? " / " + work.titleEn : "") + " — Ryuto Shima";
   if (work.metadata) {
     const meta = document.createElement("p");
     meta.className = "meta work-meta";
     meta.textContent = work.metadata;
     heading.appendChild(meta);
   }
+  if (work.exhibition) {
+    const details = document.createElement("dl");
+    details.className = "work-exhibition";
+    const fields = [
+      ["Dates", work.exhibition.dates],
+      ["Hours", work.exhibition.hours],
+      ["Venue", work.exhibition.venue],
+      ["Event", work.exhibition.event],
+      ["Award", work.exhibition.award],
+      ["Admission", work.exhibition.admission]
+    ];
+    fields.forEach(function (entry) {
+      const value = entry[1];
+      if (!value || Array.isArray(value) && !value.length) return;
+      const term = document.createElement("dt");
+      term.textContent = entry[0];
+      const description = document.createElement("dd");
+      const lines = Array.isArray(value) ? value : [value];
+      lines.forEach(function (line) {
+        const item = document.createElement("span");
+        item.className = "work-exhibition-line";
+        item.textContent = line;
+        description.appendChild(item);
+      });
+      details.appendChild(term);
+      details.appendChild(description);
+    });
+    heading.appendChild(details);
+  }
+
   // media preserves the author's order, including interleaved photographs and videos.
   // Older entries may still use images or image.
   const sources = Array.isArray(work.media) ? work.media : (work.images || (work.image ? [work.image] : []));
