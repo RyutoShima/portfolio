@@ -76,8 +76,10 @@ window.PORTFOLIO_DATA = {
   },
   "works": {
     "light-with-mk1": {
-      "title": "音＿機構「Light with MK1」",
+      "title": "音＿機構 Vol.1 「Light with」",
       "genre": "sound-art",
+      "descriptionJa": "光と音。私達の世界を支配する二つの感覚。これは相互作用しながら我々の知覚を満たす。\n\n光とは短期記憶への依存が少なく、現在をあるがままに映し出す。半面、音はワーキングメモリへの依存が大きく、現在の知覚は過去の記憶に依存する。\n\nここでは、光、つまり視覚に伴う情報が直接音を変化させる場合について考える。往々にして楽器を演奏する人間というのは、「手元を見るな」と言われたことがあるだろう。これはつまり、演奏というのが本質的に「感覚」に依存することを示している。しかし、これは結果的に演奏という行為の崇高さへとつながる。ここでは、視覚に依存した演奏を用いて、演奏の敷居を下げ、かつ、光と音、過去と現在の境界が希薄化した状態を目指す。ここから、「面白さ」を感じ取ってくれると嬉しい。",
+      "descriptionEn": "Light and sound shape how we experience the world. Though we perceive them through different senses, they continually interact in shaping our perception.\n\nVision relies comparatively little on short-term memory, presenting the immediate moment as it appears. Sound, by contrast, depends more heavily on working memory: what we hear in the present is shaped by what we have heard in the past.\n\nThis work explores what happens when light—that is, visual information—directly changes sound. Anyone who has played a musical instrument may have been told, “Don't look at your hands.” Such advice suggests that musical performance is fundamentally grounded in sensory intuition. At the same time, that reliance on intuition can contribute to the sense of refinement and mastery associated with performance. By making visual perception an integral part of playing, this work seeks to make performance more accessible while blurring the boundaries between light and sound, and between past and present. I hope it offers a sense of discovery and intrigue.",
       "image": "assets/works/Light with MK1/01.png",
       "media": [
         "assets/works/Light with MK1/01.png",

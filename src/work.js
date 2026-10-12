@@ -13,20 +13,28 @@
   back.href = "genre.html?genre=" + encodeURIComponent(work.genre);
   back.textContent = "← " + data.genres[work.genre].label;
   root.appendChild(back);
+  const layout = document.createElement("div");
+  layout.className = "work-detail-layout";
+
+  const mediaStack = document.createElement("div");
+  mediaStack.className = "work-stack work-detail-media";
+  const heading = document.createElement("div");
+  heading.className = "work-detail-heading";
+  const copy = document.createElement("div");
+  copy.className = "work-detail-text";
+
   const title = document.createElement("h1");
   title.className = "work-title";
   if (/^[\x00-\x7F]+$/.test(work.title)) title.classList.add("latin");
   title.textContent = work.title;
-  root.appendChild(title);
+  heading.appendChild(title);
   document.title = work.title + " — Ryuto Shima";
   if (work.metadata) {
     const meta = document.createElement("p");
     meta.className = "meta work-meta";
     meta.textContent = work.metadata;
-    root.appendChild(meta);
+    heading.appendChild(meta);
   }
-  const mediaStack = document.createElement("div");
-  mediaStack.className = "work-stack";
   // media preserves the author's order, including interleaved photographs and videos.
   // Older entries may still use images or image.
   const sources = Array.isArray(work.media) ? work.media : (work.images || (work.image ? [work.image] : []));
@@ -205,6 +213,38 @@
     mediaStack.appendChild(gallery);
     selectMedia(0);
   }
+  // Render bilingual text as separate sections; legacy one-language descriptions still work.
+  function appendParagraphs(target, value) {
+    value.split(/\n\s*\n/).forEach(function (paragraph) {
+      if (!paragraph.trim()) return;
+      const text = document.createElement("p");
+      text.textContent = paragraph.trim();
+      target.appendChild(text);
+    });
+  }
+
+  if (work.descriptionJa || work.descriptionEn) {
+    [
+      { text: work.descriptionJa, label: "日本語", lang: "ja" },
+      { text: work.descriptionEn, label: "English", lang: "en" }
+    ].forEach(function (entry) {
+      if (!entry.text) return;
+      const section = document.createElement("section");
+      section.className = "work-description work-description--" + entry.lang;
+      section.lang = entry.lang;
+      const label = document.createElement("h2");
+      label.className = "work-description-label";
+      label.textContent = entry.label;
+      section.appendChild(label);
+      appendParagraphs(section, entry.text);
+      copy.appendChild(section);
+    });
+  } else if (work.description) {
+    const description = document.createElement("div");
+    description.className = "work-description";
+    appendParagraphs(description, work.description);
+    copy.appendChild(description);
+  }
   if (work.externalUrl) {
     const external = document.createElement("a");
     external.className = "external-link";
@@ -213,23 +253,16 @@
     external.rel = "noopener noreferrer";
     external.textContent = "YouTubeで見る ↗";
     external.setAttribute("aria-label", "YouTubeで見る（新しいタブ）");
-    mediaStack.appendChild(external);
+    copy.appendChild(external);
   }
-  if (work.description) {
-    const description = document.createElement("div");
-    description.className = "work-description";
-    work.description.split(/\n\s*\n/).forEach(function (paragraph) {
-      const text = document.createElement("p");
-      text.textContent = paragraph;
-      description.appendChild(text);
-    });
-    mediaStack.appendChild(description);
-  }
-  if (!sources.length && !work.externalUrl && !work.description) {
+  if (!sources.length && !work.externalUrl && !work.description && !work.descriptionJa && !work.descriptionEn) {
     const pending = document.createElement("p");
     pending.className = "status-text";
     pending.textContent = "画像・詳細情報は未登録です。";
-    mediaStack.appendChild(pending);
+    copy.appendChild(pending);
   }
-  root.appendChild(mediaStack);
+  layout.appendChild(mediaStack);
+  layout.appendChild(heading);
+  layout.appendChild(copy);
+  root.appendChild(layout);
 })();
