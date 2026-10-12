@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Genre — Ryuto Shima</title>
+  <link rel="stylesheet" href="src/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">本文へ移動</a>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Ryuto Shima — ホーム">
+      <img class="brand-logo" src="assets/brand/ryuto-shima-logo.svg" width="72" height="51" alt="">
+    </a>
+  </header>
+  <div class="site-layout">
+    <aside class="sidebar">
+      <nav class="site-nav" id="site-nav" aria-label="メインナビゲーション"></nav>
+    </aside>
+    <main id="main" class="page-shell" tabindex="-1">
+      <h1 id="genre-title" class="page-title"></h1>
+      <div id="genre-content"></div>
+      <noscript><p>作品一覧を表示するにはJavaScriptを有効にしてください。</p></noscript>
+    </main>
+  </div>
+  <script src="src/data.js"></script>
+  <script src="src/site.js"></script>
+  <script src="src/work-grid.js"></script>
+  <script src="src/genre.js"></script>
+</body>
+</html>
