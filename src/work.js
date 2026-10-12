@@ -115,6 +115,20 @@
       }
     }
 
+
+    // Only canonical Niconico watch/embed links are recognized.
+    function getNiconicoId(source) {
+      try {
+        const url = new URL(source);
+        const host = url.hostname.toLowerCase();
+        if (!["www.nicovideo.jp", "nicovideo.jp", "embed.nicovideo.jp"].includes(host)) return null;
+        const match = url.pathname.match(/^\/watch\/((?:sm|so|nm)\d+)\/?$/);
+        return match ? match[1] : null;
+      } catch (error) {
+        return null;
+      }
+    }
+
     function selectMedia(index) {
       if (index < 0 || index >= sources.length || index === activeIndex && screen.firstChild) return;
       const previousVideo = screen.querySelector("video");
@@ -123,8 +137,17 @@
       activeIndex = index;
       const source = sources[index];
       const youtubeId = getYouTubeId(source);
+      const niconicoId = getNiconicoId(source);
       let media;
-      if (youtubeId) {
+      if (niconicoId) {
+        media = document.createElement("iframe");
+        media.src = "https://embed.nicovideo.jp/watch/" + niconicoId;
+        media.title = work.title + " — ニコニコ動画 " + (index + 1);
+        media.allow = "fullscreen; encrypted-media; picture-in-picture";
+        media.allowFullscreen = true;
+        media.referrerPolicy = "strict-origin-when-cross-origin";
+        media.loading = "lazy";
+      } else if (youtubeId) {
         media = document.createElement("iframe");
         media.src = "https://www.youtube-nocookie.com/embed/" + youtubeId;
         media.title = work.title + " — YouTube動画 " + (index + 1);
@@ -149,7 +172,7 @@
         media.alt = work.title + " — 画像 " + (index + 1);
         media.decoding = "async";
       }
-      media.className = "work-gallery-main-media" + (youtubeId ? " work-gallery-youtube" : "");
+      media.className = "work-gallery-main-media" + (youtubeId ? " work-gallery-youtube" : niconicoId ? " work-gallery-niconico" : "");
       screen.replaceChildren(media);
 
       thumbnails.forEach(function (button, thumbIndex) {
@@ -228,14 +251,29 @@
 
       sources.forEach(function (source, index) {
         const youtubeId = getYouTubeId(source);
+        const niconicoId = getNiconicoId(source);
         const videoItem = isVideo(source);
         const button = document.createElement("button");
         button.type = "button";
         button.className = "work-gallery-thumb";
-        button.setAttribute("aria-label", (youtubeId ? "YouTube動画 " : videoItem ? "動画 " : "画像 ") + (index + 1) + " を表示");
+        button.setAttribute("aria-label", (niconicoId ? "ニコニコ動画 " : youtubeId ? "YouTube動画 " : videoItem ? "動画 " : "画像 ") + (index + 1) + " を表示");
         button.setAttribute("aria-pressed", index === 0 ? "true" : "false");
 
-        if (youtubeId) {
+        if (niconicoId) {
+          // A stable video-specific thumbnail URL is not guaranteed by the public link.
+          // Render a clear square Niconico placeholder rather than a broken image.
+          const preview = document.createElement("span");
+          preview.className = "work-gallery-thumb-niconico latin";
+          preview.textContent = "NICO";
+          preview.setAttribute("aria-hidden", "true");
+          button.appendChild(preview);
+
+          const mark = document.createElement("span");
+          mark.className = "work-gallery-thumb-play";
+          mark.textContent = "▶";
+          mark.setAttribute("aria-hidden", "true");
+          button.appendChild(mark);
+        } else if (youtubeId) {
           const preview = document.createElement("img");
           preview.className = "work-gallery-thumb-media";
           preview.src = "https://i.ytimg.com/vi/" + youtubeId + "/hqdefault.jpg";
@@ -288,6 +326,19 @@
     }
 
     mediaStack.appendChild(gallery);
+
+    // Provide a direct Niconico link in case the external player is blocked.
+    const nicoSource = sources.find(function (source) { return Boolean(getNiconicoId(source)); });
+    if (nicoSource) {
+      const direct = document.createElement("a");
+      direct.className = "external-link";
+      direct.href = nicoSource;
+      direct.target = "_blank";
+      direct.rel = "noopener noreferrer";
+      direct.textContent = "ニコニコ動画で見る ↗";
+      mediaStack.appendChild(direct);
+    }
+
     selectMedia(0);
   }
   // Render bilingual text as separate sections; legacy one-language descriptions still work.

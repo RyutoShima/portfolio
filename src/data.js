@@ -174,11 +174,13 @@ window.PORTFOLIO_DATA = {
     },
     "initinal-conditions": {
       "title": "Initinal Conditions",
-      "genre": "music"
+      "genre": "music",
+      "media": ["https://www.nicovideo.jp/watch/sm45779154?ref=garage_share_other"]
     },
     "ore-vs-hatsune-miku": {
       "title": "俺VS初音ミク",
-      "genre": "music"
+      "genre": "music",
+      "media": ["https://www.nicovideo.jp/watch/sm45779154?ref=garage_share_other"]
     },
     "ozm-sis-vol-3": {
       "title": "ozm_sis vol.3",

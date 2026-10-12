@@ -111,3 +111,10 @@ Live Setは https://youtu.be/gomq4a4tauA 。正式タイトル・日時・会場
 - 自己増幅器初回・再展示には同じ日英文、MK2にはMK1と同じ日英文を登録。NO NAME SOUNDは主催者告知の導入を除いた5段落を日本語で登録（英訳は未提供のため未掲載）。自己聴取回路とsoil withには未提供の本文を追加しない。
 - 2025年11月10日（月）〜14日（金）と2025年12月12日（金）〜14日（日）は曜日と一致。2025年10月4〜5日はモンブランピクチャーズ賞の2025年受賞記録から同じ年として入力、要本人確認。
 - 既存素材および `main` は変更しない。`site-v1` に反映後は公開サイトが自動更新される。
+
+## Music作品 ニコニコ動画ギャラリー（2026-10-12）
+
+- `initinal-conditions` と `ore-vs-hatsune-miku` の `media` に本人提供の同一URL `https://www.nicovideo.jp/watch/sm45779154?ref=garage_share_other` を登録。両作品で同じ動画が表示される。意図的な重複か誤送信かは本人確認待ち。
+- `src/work.js` の `getNiconicoId` が正規URLの `sm/so/nm` IDを検証し、`https://embed.nicovideo.jp/watch/...` に埋め込み。選択変更時はiframeをDOMから除去して停止。外部リンクも設置し、埋め込み不可時に利用可能。
+- Nicoのサムネイルは独自の動画画像URLを推定せず、四角い「NICO」プレースホルダー＋再生アイコン。メディアが1件なら従来ギャラリー仕様によりサムネイル列は出さない。
+- YouTube・MP4・写真・他の作品情報は変更せず、`main` は不変更。
